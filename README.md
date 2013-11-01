@@ -3,7 +3,7 @@ Sistema-de-gestion-con-PyQt5
 
 Sistema de gestion con PyQt5
 
-Hasta hoy puede hacer:
+Hasta hoy puede hacer: <br>
 	- Administrar usuarios
 	- Control de usuario
 	- Gestion de proveedores, clientes y productos
