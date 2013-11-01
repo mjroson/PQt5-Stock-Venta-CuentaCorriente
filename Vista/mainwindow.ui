@@ -1,0 +1,4164 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1190</width>
+    <height>630</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Duftuban</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../Desktop/Pools48.png</normaloff>../../../../Desktop/Pools48.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">alternate-background-color: rgb(237, 255, 230);</string>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QTabWidget" name="twMenu">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>1171</width>
+      <height>571</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 11pt &quot;Segoe UI&quot;;</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab_Transacciones">
+     <attribute name="title">
+      <string>Transacciones</string>
+     </attribute>
+     <widget class="QRadioButton" name="rbCompra_t">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>12</y>
+        <width>81</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Compra</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbVenta_t">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>12</y>
+        <width>61</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Venta</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtFilterCliente_t">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>100</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbFilterCliente_t">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>100</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Apellido</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTableView" name="tvProductos_t">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>130</y>
+        <width>681</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QLineEdit" name="txtFilterProducto_t">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>100</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbFilterProducto_t">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>100</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Marca</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Rubro</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Precio de Venta</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Precio Compra</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QSpinBox" name="sbCantidadProducto_t">
+      <property name="geometry">
+       <rect>
+        <x>1020</x>
+        <y>250</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tvDetalleTransaccion_t">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>310</y>
+        <width>1141</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QPushButton" name="btnSumarProducto_t">
+      <property name="geometry">
+       <rect>
+        <x>1120</x>
+        <y>250</y>
+        <width>21</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/mas.png</normaloff>../Img/mas.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnRestarProducto_t">
+      <property name="geometry">
+       <rect>
+        <x>1120</x>
+        <y>450</y>
+        <width>21</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/menos.png</normaloff>../Img/menos.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAceptar_t">
+      <property name="geometry">
+       <rect>
+        <x>1050</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>ACEPTAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/guardar.png</normaloff>../Img/guardar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCancelar_t">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>CANCELAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="Line" name="line1_t">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>1151</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line2_t">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>280</y>
+        <width>981</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label1_t">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Tipo de transaccion : </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label2_t">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cliente : </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label3_t">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>70</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Producto : </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label4_t">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>275</y>
+        <width>171</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Detalle Transaccion </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label5_t">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>250</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cantidad :</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tvClientes_t">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>431</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QLabel" name="lblTotal">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>460</y>
+        <width>46</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0,00</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>460</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Total :  ..................$</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_Pagos">
+     <attribute name="title">
+      <string>Pagos</string>
+     </attribute>
+     <widget class="QTableView" name="tvCuentaCorriente_pag">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>1141</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QTableView" name="tvDetalleTransaccion_pag">
+      <property name="geometry">
+       <rect>
+        <x>585</x>
+        <y>301</y>
+        <width>571</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QPushButton" name="btnAceptar_pag">
+      <property name="geometry">
+       <rect>
+        <x>1050</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>ACEPTAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/guardar.png</normaloff>../Img/guardar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCancelar_pag">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>CANCELAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtFilterPagos_pag">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>20</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbFilterCliente_pag">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Persona</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Fecha</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label1_pag">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>310</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Monto :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label4_pag">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>310</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Detalle Transaccion :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label3_pag">
+      <property name="geometry">
+       <rect>
+        <x>43</x>
+        <y>370</y>
+        <width>121</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Forma de pago : </string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtMonto_gt">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>310</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbFormaPago_pag">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>370</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>8</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Efectivo</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tarjeta</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Cheque</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label2_pag">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>310</y>
+        <width>16</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>$</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line1_pag">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>270</y>
+        <width>1161</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_Productos">
+     <attribute name="title">
+      <string>Productos</string>
+     </attribute>
+     <widget class="QTableView" name="tvProductos_p">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>1141</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QComboBox" name="cbFilterProducto_p">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Marca</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Rubro</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Precio Venta</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLineEdit" name="txtFilterProductos_p">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>20</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line1_p">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>260</y>
+        <width>1171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBorrar_p">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>1050</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>BORRAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnModificar_p">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>MODIFICAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/actualizar.png</normaloff>../Img/actualizar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAgregar_p">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>AGREGAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/agregar.png</normaloff>../Img/agregar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnGuardar_p">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>GUARDAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/guardar.png</normaloff>../Img/guardar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QWidget" name="wDatosProducto" native="true">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>310</y>
+        <width>1141</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <widget class="QLabel" name="label2_p">
+       <property name="geometry">
+        <rect>
+         <x>5</x>
+         <y>70</y>
+         <width>131</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Precio Compra :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label8_p">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>70</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Cantidad Minima :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label1_p">
+       <property name="geometry">
+        <rect>
+         <x>47</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Nombre :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label6_p">
+       <property name="geometry">
+        <rect>
+         <x>353</x>
+         <y>20</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Cantidad :</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="sbCantidad_p">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>20</y>
+         <width>131</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnMarca_p">
+       <property name="geometry">
+        <rect>
+         <x>830</x>
+         <y>20</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/mas.png</normaloff>../Img/mas.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtPrecioVenta_p">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>120</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhPreferNumbers</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtPrecioCompra_p">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>70</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label10_p">
+       <property name="geometry">
+        <rect>
+         <x>346</x>
+         <y>120</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Proveedor :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtRubro_p">
+       <property name="geometry">
+        <rect>
+         <x>700</x>
+         <y>70</y>
+         <width>131</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rbMasculino_p">
+       <property name="geometry">
+        <rect>
+         <x>1070</x>
+         <y>20</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="text">
+        <string>M</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label3_p">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>70</y>
+         <width>16</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>$</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="rbFemenino_p">
+       <property name="geometry">
+        <rect>
+         <x>1010</x>
+         <y>20</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="text">
+        <string>F</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtMarca_p">
+       <property name="geometry">
+        <rect>
+         <x>700</x>
+         <y>20</y>
+         <width>131</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label7_p">
+       <property name="geometry">
+        <rect>
+         <x>623</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Marca :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label4_p">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>120</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Precio Venta :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtNombre_p">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>20</y>
+         <width>131</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label5_p">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>120</y>
+         <width>16</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>$</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnRubro_p">
+       <property name="geometry">
+        <rect>
+         <x>830</x>
+         <y>70</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/mas.png</normaloff>../Img/mas.png</iconset>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txtDescripcion_p">
+       <property name="geometry">
+        <rect>
+         <x>910</x>
+         <y>100</y>
+         <width>221</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtProveedor_p">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>120</y>
+         <width>131</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label11_p">
+       <property name="geometry">
+        <rect>
+         <x>625</x>
+         <y>70</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Rubro :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label13_p">
+       <property name="geometry">
+        <rect>
+         <x>922</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sexo :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label14_p">
+       <property name="geometry">
+        <rect>
+         <x>877</x>
+         <y>70</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Descripcion :</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="sbCantidadMin_p">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>70</y>
+         <width>131</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label11_p_2">
+       <property name="geometry">
+        <rect>
+         <x>620</x>
+         <y>120</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Estado :</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbEstado_p">
+       <property name="geometry">
+        <rect>
+         <x>700</x>
+         <y>120</y>
+         <width>131</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>ACTIVO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>INACTIVO</string>
+        </property>
+       </item>
+      </widget>
+     </widget>
+     <widget class="QCheckBox" name="cbInactivo_p">
+      <property name="geometry">
+       <rect>
+        <x>1040</x>
+        <y>30</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Inactivos</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cbSinStock_p">
+      <property name="geometry">
+       <rect>
+        <x>1040</x>
+        <y>10</y>
+        <width>101</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sin stock</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_Clientes">
+     <attribute name="title">
+      <string>Clientes</string>
+     </attribute>
+     <widget class="QLineEdit" name="txtFilterClientes_c">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>20</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbFilterClientes_c">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Apellido</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="Line" name="line1_c">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>260</y>
+        <width>1171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tvClientes_c">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>1141</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QPushButton" name="btnBorrar_c">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>1050</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>BORRAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnGuardar_c">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>GUARDAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/guardar.png</normaloff>../Img/guardar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAgregar_c">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>AGREGAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/agregar.png</normaloff>../Img/agregar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnModificar_c">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>MODIFICAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/actualizar.png</normaloff>../Img/actualizar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QWidget" name="wDatosCliente" native="true">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>310</y>
+        <width>1141</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <widget class="QLineEdit" name="txtApellido_c">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>80</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDPiso_c">
+       <property name="geometry">
+        <rect>
+         <x>708</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label7_c">
+       <property name="geometry">
+        <rect>
+         <x>745</x>
+         <y>80</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Dpto</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSumarTelefono_c">
+       <property name="geometry">
+        <rect>
+         <x>1110</x>
+         <y>20</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/mas.png</normaloff>../Img/mas.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label1_c">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Nombre :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label5_c">
+       <property name="geometry">
+        <rect>
+         <x>596</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Nro.</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnRestarTelefono_c">
+       <property name="geometry">
+        <rect>
+         <x>1110</x>
+         <y>110</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/menos.png</normaloff>../Img/menos.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDDpto_c">
+       <property name="geometry">
+        <rect>
+         <x>780</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDNumero_c">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>80</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtNombre_c">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>20</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label2_c">
+       <property name="geometry">
+        <rect>
+         <x>38</x>
+         <y>80</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Apellido :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label3_c">
+       <property name="geometry">
+        <rect>
+         <x>368</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Email :</string>
+       </property>
+      </widget>
+      <widget class="QTableView" name="tvTelefonos_c">
+       <property name="geometry">
+        <rect>
+         <x>870</x>
+         <y>80</y>
+         <width>231</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOn</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+      <widget class="QLineEdit" name="txtDireccion_c">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>80</y>
+         <width>151</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label6_c">
+       <property name="geometry">
+        <rect>
+         <x>675</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Piso</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label8_c">
+       <property name="geometry">
+        <rect>
+         <x>858</x>
+         <y>18</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Telefono :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTelefono_c">
+       <property name="geometry">
+        <rect>
+         <x>960</x>
+         <y>20</y>
+         <width>141</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly</set>
+       </property>
+       <property name="maxLength">
+        <number>30</number>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+       <property name="cursorMoveStyle">
+        <enum>Qt::VisualMoveStyle</enum>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtEmail_c">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>20</y>
+         <width>371</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label4_c">
+       <property name="geometry">
+        <rect>
+         <x>341</x>
+         <y>80</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Direccion :</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnTelefono_c">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>1010</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/icon-tel.png</normaloff>../Img/icon-tel.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnCelular_c">
+       <property name="geometry">
+        <rect>
+         <x>1040</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/icon-cel.png</normaloff>../Img/icon-cel.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnFax_c">
+       <property name="geometry">
+        <rect>
+         <x>1070</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/icon-fax.png</normaloff>../Img/icon-fax.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnCancelarTelefono_c">
+       <property name="geometry">
+        <rect>
+         <x>930</x>
+         <y>20</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_Proovedores">
+     <attribute name="title">
+      <string>Proveedores</string>
+     </attribute>
+     <widget class="QComboBox" name="cbFilterProveedores_prov">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Descripcion</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTableView" name="tvProveedores_prov">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>1141</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::CustomDashLine</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="Line" name="line1_prov">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>260</y>
+        <width>1171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="txtFilterProveedores_prov">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>20</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBorrar_prov">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>1050</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>BORRAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnGuardar_prov">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>GUARDAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/guardar.png</normaloff>../Img/guardar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAgregar_prov">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>AGREGAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/agregar.png</normaloff>../Img/agregar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnModificar_prov">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>MODIFICAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/actualizar.png</normaloff>../Img/actualizar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QWidget" name="wDatosProveedor" native="true">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>310</y>
+        <width>1131</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <widget class="QLabel" name="label8_prov">
+       <property name="geometry">
+        <rect>
+         <x>858</x>
+         <y>18</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Telefono :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label5_prov">
+       <property name="geometry">
+        <rect>
+         <x>596</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Nro.</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSumarTelefono_prov">
+       <property name="geometry">
+        <rect>
+         <x>1110</x>
+         <y>20</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/mas.png</normaloff>../Img/mas.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtNombre_prov">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>20</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDNumero_prov">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>80</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDireccion_prov">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>80</y>
+         <width>151</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDPiso_prov">
+       <property name="geometry">
+        <rect>
+         <x>708</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtEmail_prov">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>20</y>
+         <width>371</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label3_prov">
+       <property name="geometry">
+        <rect>
+         <x>368</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Email :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label1_prov">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Nombre :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label6_prov">
+       <property name="geometry">
+        <rect>
+         <x>675</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Piso</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDDpto_prov">
+       <property name="geometry">
+        <rect>
+         <x>780</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDescripcion_prov">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>80</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label4_prov">
+       <property name="geometry">
+        <rect>
+         <x>342</x>
+         <y>80</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Direccion :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label7_prov">
+       <property name="geometry">
+        <rect>
+         <x>745</x>
+         <y>80</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Dpto</string>
+       </property>
+      </widget>
+      <widget class="QTableView" name="tvTelefonos_prov">
+       <property name="geometry">
+        <rect>
+         <x>870</x>
+         <y>80</y>
+         <width>231</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOn</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::CustomDashLine</enum>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+      <widget class="QLabel" name="label2_prov">
+       <property name="geometry">
+        <rect>
+         <x>18</x>
+         <y>80</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Descripcion :</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnRestarTelefono_prov">
+       <property name="geometry">
+        <rect>
+         <x>1110</x>
+         <y>110</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/menos.png</normaloff>../Img/menos.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtTelefono_prov">
+       <property name="geometry">
+        <rect>
+         <x>960</x>
+         <y>20</y>
+         <width>141</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label1_prov_2">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>130</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Web :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtWeb_prov">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>130</y>
+         <width>351</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnCelular_prov">
+       <property name="geometry">
+        <rect>
+         <x>1040</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/icon-cel.png</normaloff>../Img/icon-cel.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnTelefono_prov">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>1010</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/icon-tel.png</normaloff>../Img/icon-tel.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnFax_prov">
+       <property name="geometry">
+        <rect>
+         <x>1070</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/icon-fax.png</normaloff>../Img/icon-fax.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnCancelarTelefono_prov">
+       <property name="geometry">
+        <rect>
+         <x>930</x>
+         <y>20</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_Usuarios">
+     <attribute name="title">
+      <string>Usuarios</string>
+     </attribute>
+     <widget class="QLineEdit" name="txtFilterUsuario_u">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>20</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnGuardar_u">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>GUARDAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/guardar.png</normaloff>../Img/guardar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="cbFilterUsuario_u">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>91</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Apellido</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Usuario</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tipo</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QTableView" name="tvUsuarios_u">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>1141</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderHighlightSections">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QPushButton" name="btnAgregar_u">
+      <property name="geometry">
+       <rect>
+        <x>820</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>AGREGAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/agregar.png</normaloff>../Img/agregar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="Line" name="line1_u">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>260</y>
+        <width>1171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnModificar_u">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>490</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>MODIFICAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/actualizar.png</normaloff>../Img/actualizar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBorrar_u">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>1050</x>
+        <y>490</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>BORRAR</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QWidget" name="wDatosUsuario" native="true">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>310</y>
+        <width>1141</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <widget class="QLabel" name="label5_u">
+       <property name="geometry">
+        <rect>
+         <x>342</x>
+         <y>80</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Direccion :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label1_u">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Nombre :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtNombre_u">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>20</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDireccion_u">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>80</y>
+         <width>151</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtApellido_u">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>80</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbTipoUsuario_u">
+       <property name="geometry">
+        <rect>
+         <x>757</x>
+         <y>140</y>
+         <width>81</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>user</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>admin</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label8_u">
+       <property name="geometry">
+        <rect>
+         <x>745</x>
+         <y>80</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Dpto</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtContrasena_u">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>140</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label7_u">
+       <property name="geometry">
+        <rect>
+         <x>675</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Piso</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDDpto_u">
+       <property name="geometry">
+        <rect>
+         <x>780</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label2_u">
+       <property name="geometry">
+        <rect>
+         <x>39</x>
+         <y>80</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Apellido :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtEmail_u">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>20</y>
+         <width>371</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSumarTelefono_u">
+       <property name="geometry">
+        <rect>
+         <x>1110</x>
+         <y>20</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/mas.png</normaloff>../Img/mas.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label3_u">
+       <property name="geometry">
+        <rect>
+         <x>45</x>
+         <y>140</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Usuario : </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label11_u">
+       <property name="geometry">
+        <rect>
+         <x>858</x>
+         <y>18</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Telefono :</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label6_u">
+       <property name="geometry">
+        <rect>
+         <x>596</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Nro.</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label9_u">
+       <property name="geometry">
+        <rect>
+         <x>326</x>
+         <y>140</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Constraseña : </string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtUsuario_u">
+       <property name="geometry">
+        <rect>
+         <x>142</x>
+         <y>140</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnRestarTelefono_u">
+       <property name="geometry">
+        <rect>
+         <x>1110</x>
+         <y>110</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/menos.png</normaloff>../Img/menos.png</iconset>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label4">
+       <property name="geometry">
+        <rect>
+         <x>368</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Email :</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDPiso_u">
+       <property name="geometry">
+        <rect>
+         <x>708</x>
+         <y>80</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txtDNumero_u">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>80</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label10_u">
+       <property name="geometry">
+        <rect>
+         <x>650</x>
+         <y>140</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Tipo Usuario :</string>
+       </property>
+      </widget>
+      <widget class="QTableView" name="tvTelefonos_u">
+       <property name="geometry">
+        <rect>
+         <x>870</x>
+         <y>80</y>
+         <width>231</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 7pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOn</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+      <widget class="QLineEdit" name="txtTelefono_u">
+       <property name="geometry">
+        <rect>
+         <x>960</x>
+         <y>20</y>
+         <width>141</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnCelular_u">
+       <property name="geometry">
+        <rect>
+         <x>1040</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/icon-cel.png</normaloff>../Img/icon-cel.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnTelefono_u">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>1010</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/icon-tel.png</normaloff>../Img/icon-tel.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnFax_u">
+       <property name="geometry">
+        <rect>
+         <x>1070</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/icon-fax.png</normaloff>../Img/icon-fax.png</iconset>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnCancelarTelefono_u">
+       <property name="geometry">
+        <rect>
+         <x>930</x>
+         <y>20</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_Estadisticas">
+     <attribute name="title">
+      <string>Estadisticas</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>10</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS UI Gothic</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Usuario :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNombreUsuario">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>10</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS UI Gothic</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnNotification">
+    <property name="geometry">
+     <rect>
+      <x>1150</x>
+      <y>10</y>
+      <width>31</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(175, 231, 196);
+font: 75 9pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 197, 174);</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1190</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuProbando">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionTransacciones"/>
+    <addaction name="actionProductos"/>
+    <addaction name="actionClientes"/>
+    <addaction name="actionProveedores"/>
+    <addaction name="actionEstaditicas"/>
+    <addaction name="actionUsuarios"/>
+    <addaction name="separator"/>
+    <addaction name="actionCerrarSesion"/>
+    <addaction name="separator"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionManual_de_uso"/>
+    <addaction name="actionReportar_error"/>
+   </widget>
+   <addaction name="menuProbando"/>
+   <addaction name="menuAyuda"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionManual_de_uso">
+   <property name="text">
+    <string>Manual de uso</string>
+   </property>
+  </action>
+  <action name="actionReportar_error">
+   <property name="text">
+    <string>Reportar error</string>
+   </property>
+  </action>
+  <action name="actionTransacciones">
+   <property name="text">
+    <string>Transacciones</string>
+   </property>
+  </action>
+  <action name="actionProductos">
+   <property name="text">
+    <string>Productos</string>
+   </property>
+  </action>
+  <action name="actionClientes">
+   <property name="text">
+    <string>Clientes</string>
+   </property>
+  </action>
+  <action name="actionProveedores">
+   <property name="text">
+    <string>Proveedores</string>
+   </property>
+  </action>
+  <action name="actionEstaditicas">
+   <property name="text">
+    <string>Estaditicas</string>
+   </property>
+  </action>
+  <action name="actionUsuarios">
+   <property name="text">
+    <string>Usuarios</string>
+   </property>
+  </action>
+  <action name="actionCerrarSesion">
+   <property name="text">
+    <string>Cerrar Sesion</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>rbVenta_t</tabstop>
+  <tabstop>rbCompra_t</tabstop>
+  <tabstop>txtFilterCliente_t</tabstop>
+  <tabstop>tvClientes_t</tabstop>
+  <tabstop>txtFilterProducto_t</tabstop>
+  <tabstop>tvProductos_t</tabstop>
+  <tabstop>sbCantidadProducto_t</tabstop>
+  <tabstop>btnSumarProducto_t</tabstop>
+  <tabstop>tvDetalleTransaccion_t</tabstop>
+  <tabstop>btnAceptar_t</tabstop>
+  <tabstop>txtFilterPagos_pag</tabstop>
+  <tabstop>tvCuentaCorriente_pag</tabstop>
+  <tabstop>txtMonto_gt</tabstop>
+  <tabstop>cbFormaPago_pag</tabstop>
+  <tabstop>tvDetalleTransaccion_pag</tabstop>
+  <tabstop>btnAceptar_pag</tabstop>
+  <tabstop>txtFilterProductos_p</tabstop>
+  <tabstop>tvProductos_p</tabstop>
+  <tabstop>txtNombre_p</tabstop>
+  <tabstop>txtPrecioCompra_p</tabstop>
+  <tabstop>txtPrecioVenta_p</tabstop>
+  <tabstop>sbCantidad_p</tabstop>
+  <tabstop>txtMarca_p</tabstop>
+  <tabstop>txtProveedor_p</tabstop>
+  <tabstop>txtRubro_p</tabstop>
+  <tabstop>rbFemenino_p</tabstop>
+  <tabstop>rbMasculino_p</tabstop>
+  <tabstop>txtDescripcion_p</tabstop>
+  <tabstop>btnGuardar_p</tabstop>
+  <tabstop>txtFilterClientes_c</tabstop>
+  <tabstop>tvClientes_c</tabstop>
+  <tabstop>txtNombre_c</tabstop>
+  <tabstop>txtApellido_c</tabstop>
+  <tabstop>txtEmail_c</tabstop>
+  <tabstop>txtDireccion_c</tabstop>
+  <tabstop>txtDNumero_c</tabstop>
+  <tabstop>txtDPiso_c</tabstop>
+  <tabstop>txtDDpto_c</tabstop>
+  <tabstop>txtTelefono_c</tabstop>
+  <tabstop>btnSumarTelefono_c</tabstop>
+  <tabstop>tvTelefonos_c</tabstop>
+  <tabstop>btnGuardar_c</tabstop>
+  <tabstop>txtFilterProveedores_prov</tabstop>
+  <tabstop>tvProveedores_prov</tabstop>
+  <tabstop>txtNombre_prov</tabstop>
+  <tabstop>txtDescripcion_prov</tabstop>
+  <tabstop>txtWeb_prov</tabstop>
+  <tabstop>txtEmail_prov</tabstop>
+  <tabstop>txtDireccion_prov</tabstop>
+  <tabstop>txtDNumero_prov</tabstop>
+  <tabstop>txtDPiso_prov</tabstop>
+  <tabstop>txtDDpto_prov</tabstop>
+  <tabstop>txtTelefono_prov</tabstop>
+  <tabstop>btnSumarTelefono_prov</tabstop>
+  <tabstop>tvTelefonos_prov</tabstop>
+  <tabstop>btnGuardar_prov</tabstop>
+  <tabstop>txtFilterUsuario_u</tabstop>
+  <tabstop>tvUsuarios_u</tabstop>
+  <tabstop>txtNombre_u</tabstop>
+  <tabstop>txtApellido_u</tabstop>
+  <tabstop>txtUsuario_u</tabstop>
+  <tabstop>txtEmail_u</tabstop>
+  <tabstop>txtDireccion_u</tabstop>
+  <tabstop>btnBorrar_prov</tabstop>
+  <tabstop>txtDNumero_u</tabstop>
+  <tabstop>txtDPiso_u</tabstop>
+  <tabstop>txtDDpto_u</tabstop>
+  <tabstop>txtContrasena_u</tabstop>
+  <tabstop>txtTelefono_u</tabstop>
+  <tabstop>btnSumarTelefono_u</tabstop>
+  <tabstop>tvTelefonos_u</tabstop>
+  <tabstop>btnGuardar_u</tabstop>
+  <tabstop>btnCancelar_t</tabstop>
+  <tabstop>btnRestarProducto_t</tabstop>
+  <tabstop>btnModificar_c</tabstop>
+  <tabstop>btnCancelar_pag</tabstop>
+  <tabstop>btnAgregar_c</tabstop>
+  <tabstop>btnRubro_p</tabstop>
+  <tabstop>btnBorrar_c</tabstop>
+  <tabstop>btnAgregar_p</tabstop>
+  <tabstop>btnRestarTelefono_prov</tabstop>
+  <tabstop>btnRestarTelefono_c</tabstop>
+  <tabstop>cbFilterProducto_p</tabstop>
+  <tabstop>btnCelular_prov</tabstop>
+  <tabstop>btnTelefono_prov</tabstop>
+  <tabstop>btnFax_prov</tabstop>
+  <tabstop>btnCancelarTelefono_prov</tabstop>
+  <tabstop>btnMarca_p</tabstop>
+  <tabstop>cbFilterProducto_t</tabstop>
+  <tabstop>cbFilterUsuario_u</tabstop>
+  <tabstop>cbFilterCliente_t</tabstop>
+  <tabstop>btnAgregar_u</tabstop>
+  <tabstop>btnModificar_u</tabstop>
+  <tabstop>btnBorrar_u</tabstop>
+  <tabstop>btnModificar_p</tabstop>
+  <tabstop>btnFax_c</tabstop>
+  <tabstop>btnBorrar_p</tabstop>
+  <tabstop>cbTipoUsuario_u</tabstop>
+  <tabstop>btnCancelarTelefono_c</tabstop>
+  <tabstop>twMenu</tabstop>
+  <tabstop>btnCelular_c</tabstop>
+  <tabstop>btnAgregar_prov</tabstop>
+  <tabstop>btnTelefono_c</tabstop>
+  <tabstop>btnRestarTelefono_u</tabstop>
+  <tabstop>cbFilterClientes_c</tabstop>
+  <tabstop>cbFilterProveedores_prov</tabstop>
+  <tabstop>btnModificar_prov</tabstop>
+  <tabstop>cbFilterCliente_pag</tabstop>
+  <tabstop>btnCelular_u</tabstop>
+  <tabstop>btnTelefono_u</tabstop>
+  <tabstop>btnFax_u</tabstop>
+  <tabstop>btnCancelarTelefono_u</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
