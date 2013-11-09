@@ -8,15 +8,18 @@ class conexionUsuario(object):
         self.conexion = Conexion()
         self.usuario = Usuario()
 
-    def selectUsuario(self):
+    def selectUsuario(self, typeParameter, parameter):
         query = """
                     SELECT u.idusuarios, p.nombre, u.apellido, u.usuario, u.tipo, u.contraseña, p.email, d.direccion,
                             d.numero, d.piso, d.dpto, d.iddirecciones, p.idpersonas
                     FROM usuarios u , personas p, direcciones d
-                    WHERE p.idpersonas = u.personas_idpersonas and p.direcciones_iddirecciones = d.iddirecciones
+                    WHERE p.idpersonas = u.personas_idpersonas and p.direcciones_iddirecciones = d.iddirecciones and
+                    """ + typeParameter + """ LIKE %s
                 """
+        param = parameter + '%'
+        values = param
         self.conexion.abrirConexion()
-        self.conexion.cursor.execute(query)
+        self.conexion.cursor.execute(query, values)
         listUsuario = self.conexion.cursor.fetchall()
         self.conexion.cerrarConexion()
         return listUsuario

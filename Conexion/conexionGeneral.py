@@ -16,7 +16,7 @@ class ConexionGenerales(object):
         query = """
                    SELECT idproductos, nombre, cantidad, cant_minima
                    FROM productos
-                   WHERE cantidad = cant_minima or cantidad < cant_minima and estado = 1
+                   WHERE estado = 1 and cantidad BETWEEN 0 and cant_minima
                """
 
         self.conexion.abrirConexion()
@@ -26,3 +26,16 @@ class ConexionGenerales(object):
         self.conexion.cerrarConexion()
 
         return listProductos
+
+    def changeStateProduct(self, producto):
+        query ="""
+                    UPDATE productos
+                    SET estado = '0'
+                    WHERE idproductos = %s
+               """
+        values = producto.getIdProducto()
+
+        self.conexion.abrirConexion()
+        self.conexion.cursor.execute(query, values)
+        self.conexion.db.commit()
+        self.conexion.cerrarConexion()

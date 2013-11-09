@@ -29,7 +29,10 @@ class MyTableModel(QAbstractTableModel):
 
     def sort(self, col, order):
         """sort table by given column number col"""
-        #self.emit(SIGNAL("layoutAboutToBeChanged()"))
+        #asd = QAbstractTableModel
+
+        #self.sort(self, len(self.mylist))
+        #self.emit(pyqtSignal("layoutAboutToBeChanged()"))
         self.senderSignalIndex()
         self.mylist = sorted(self.mylist,
             key=operator.itemgetter(col))

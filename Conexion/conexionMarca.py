@@ -12,10 +12,12 @@ class conexionMarca(object):
         self.__marca = Marca()
         
         
-    def selectMarca(self):
-        query = "SELECT idmarcas, descripcion FROM marcas"
+    def selectMarca(self, textFilter):
+        query = "SELECT idmarcas, descripcion FROM marcas WHERE descripcion LIKE %s"
+        parametro = textFilter + '%'
+        value = parametro
         self.conexion.abrirConexion()
-        self.conexion.cursor.execute(query)
+        self.conexion.cursor.execute(query, parametro)
         listMarca = self.conexion.cursor.fetchall()
 
         return listMarca

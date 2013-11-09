@@ -26,9 +26,7 @@ class PestaniaCliente():
         self.configInit()
 
 
-
     def configInit(self):
-
         #Configurando botones Generales
         self.winPrincipal.btnAgregar_c.clicked.connect(self.onClickAgregar_c)
         self.winPrincipal.btnGuardar_c.clicked.connect(self.onClickGuardar_c)
@@ -48,8 +46,9 @@ class PestaniaCliente():
         self.winPrincipal.btnFax_c.clicked.connect(self.onClickFax)
 
 
+        self.winPrincipal.txtFilterClientes_c.returnPressed.connect(self.search)
+
         #Seteando model y propiedades a la tabla
-        self.cargarTabla()
         self.winPrincipal.tvClientes_c.setSortingEnabled(True)
         self.winPrincipal.tvClientes_c.setMouseTracking(True)
         self.winPrincipal.tvClientes_c.setSelectionBehavior(QAbstractItemView.SelectRows)
@@ -60,6 +59,29 @@ class PestaniaCliente():
         self.winPrincipal.tvTelefonos_c.setMouseTracking(True)
         self.winPrincipal.tvTelefonos_c.setSelectionBehavior(QAbstractItemView.SelectRows)
 
+        self.winPrincipal.txtFilterClientes_c.setFocus(True)
+
+    def finish(self):
+        self.winPrincipal.btnAgregar_c.disconnect()
+        self.winPrincipal.btnBorrar_c.disconnect()
+        self.winPrincipal.btnModificar_c.disconnect()
+        self.winPrincipal.btnGuardar_c.disconnect()
+
+        self.winPrincipal.btnCancelarTelefono_c.disconnect()
+        self.winPrincipal.btnSumarTelefono_c.disconnect()
+        self.winPrincipal.btnRestarTelefono_c.disconnect()
+
+        self.winPrincipal.btnCelular_c.disconnect()
+        self.winPrincipal.btnFax_c.disconnect()
+        self.winPrincipal.btnTelefono_c.disconnect()
+
+        self.winPrincipal.tvTelefonos_c.disconnect()
+        self.winPrincipal.tvClientes_c.disconnect()
+
+
+    def search(self):
+        if self.winPrincipal.txtFilterClientes_c.hasFocus() is True:
+            self.cargarTabla()
 
 
     def onClickAgregar_c(self):
@@ -94,6 +116,10 @@ class PestaniaCliente():
                 self.direccion.setPiso(0)
             self.cliente.setDireccion(self.direccion)
 
+            if self.winPrincipal.cbEstado_c.currentText() == 'ACTIVO':
+                self.cliente.setEstado(1)
+            else:
+                self.cliente.setEstado(0)
 
             if self.estado == 'AGREGAR':
                 self.insertCliente()
@@ -119,24 +145,41 @@ class PestaniaCliente():
 
 
     def cargarTabla(self):
-        #listaClientes = []
-        listaClientes = self.conexionCliente.selectCliente()
-        header = ['ID','Apellido','Nombre','Email','Direccion', 'N°', 'Piso', 'Dpto', 'iddir', 'idper']
-        self.tablaModel = MyTableModel(self.winPrincipal.tvClientes_c, listaClientes, header)
-        self.winPrincipal.tvClientes_c.setModel(self.tablaModel)
-        self.winPrincipal.tvClientes_c.selectionModel().currentChanged.connect(self.changeSelectedTable)
+        parameter = self.winPrincipal.txtFilterClientes_c.text()
+        typeParameter = ''
+
+        if self.winPrincipal.cbFilterClientes_c.currentText() == 'Apellido':
+            typeParameter = 'cli.apellido'
+        else:
+            typeParameter = 'p.nombre'
+
+        parameterState = 1
+        if self.winPrincipal.cbInactivo_c.isChecked() is True:
+            parameterState = 0
+
+        listaClientes = self.conexionCliente.selectCliente(typeParameter, parameter, parameterState)
+
+        if len(listaClientes) > 0:
+            header = ['ID','Apellido','Nombre','Email','Direccion', 'N°', 'Piso', 'Dpto', 'iddir', 'idper', 'Estado']
+            self.tablaModel = MyTableModel(self.winPrincipal.tvClientes_c, listaClientes, header)
+            self.winPrincipal.tvClientes_c.setModel(self.tablaModel)
+            self.winPrincipal.tvClientes_c.selectionModel().currentChanged.connect(self.changeSelectedTable)
 
 
-        self.winPrincipal.tvClientes_c.setColumnHidden(0, True)
-        self.winPrincipal.tvClientes_c.setColumnWidth(1, 208)
-        self.winPrincipal.tvClientes_c.setColumnWidth(2, 220)
-        self.winPrincipal.tvClientes_c.setColumnWidth(3, 280)
-        self.winPrincipal.tvClientes_c.setColumnWidth(4, 364)
-        self.winPrincipal.tvClientes_c.setColumnWidth(5, 50)
-        self.winPrincipal.tvClientes_c.setColumnHidden(6, True)
-        self.winPrincipal.tvClientes_c.setColumnHidden(7, True)
-        self.winPrincipal.tvClientes_c.setColumnHidden(8, True)
-        self.winPrincipal.tvClientes_c.setColumnHidden(9, True)
+            self.winPrincipal.tvClientes_c.setColumnHidden(0, True)
+            self.winPrincipal.tvClientes_c.setColumnWidth(1, 208)
+            self.winPrincipal.tvClientes_c.setColumnWidth(2, 220)
+            self.winPrincipal.tvClientes_c.setColumnWidth(3, 280)
+            self.winPrincipal.tvClientes_c.setColumnWidth(4, 364)
+            self.winPrincipal.tvClientes_c.setColumnWidth(5, 50)
+            self.winPrincipal.tvClientes_c.setColumnHidden(6, True)
+            self.winPrincipal.tvClientes_c.setColumnHidden(7, True)
+            self.winPrincipal.tvClientes_c.setColumnHidden(8, True)
+            self.winPrincipal.tvClientes_c.setColumnHidden(9, True)
+            self.winPrincipal.tvClientes_c.setColumnHidden(10, True)
+        else:
+            self.winPrincipal.tvClientes_c.setModel(None)
+
 
     def changeSelectedTable(self, selected, deselected):
 
@@ -168,12 +211,14 @@ class PestaniaCliente():
             self.winPrincipal.tvClientes_c.setRowHeight(deselected.row(), 28)
             self.winPrincipal.tvClientes_c.setRowHeight(selected.row(), 45)
 
+            self.cliente.setEstado(int(clienteSelected[10]))
 
             self.setCampos()
             self.winPrincipal.btnModificar_c.setEnabled(True)
             self.winPrincipal.btnBorrar_c.setEnabled(True)
             self.winPrincipal.tvTelefonos_c.setModel(None)
             self.cargarTablaTelefono()
+
 
     def validarBotones(self, button):
         if button == 'AGREGAR' :
@@ -221,9 +266,11 @@ class PestaniaCliente():
             self.conexionCliente.insertarCliente(cliente=self.cliente)
             self.cargarTabla()
 
+
     def modificarCliente(self):
             self.conexionCliente.modificarCliente(self.cliente)
             self.cargarTabla()
+
 
     def limpiarCampos(self):
         self.winPrincipal.txtApellido_c.setText('')
@@ -234,6 +281,9 @@ class PestaniaCliente():
         self.winPrincipal.txtDDpto_c.setText('')
         self.winPrincipal.txtEmail_c.setText('')
         self.winPrincipal.tvTelefonos_c.setModel(None)
+        self.winPrincipal.cbEstado_c.setCurrentIndex(0)
+        self.winPrincipal.txtFilterClientes_c.setText('')
+
 
     def setCampos(self):
         self.winPrincipal.txtApellido_c.setText(self.cliente.getApellido())
@@ -257,7 +307,10 @@ class PestaniaCliente():
         else:
             self.winPrincipal.txtDDpto_c.setText('')
 
-        
+        if self.cliente.getEstado() == 1:
+            self.winPrincipal.cbEstado_c.setCurrentIndex(0)
+        else:
+            self.winPrincipal.cbEstado_c.setCurrentIndex(1)
 
     def validar(self):
         mensaje = ''
@@ -289,7 +342,6 @@ class PestaniaCliente():
                 self.winPrincipal.tvTelefonos_c.setRowHidden(r, False)
 
 
-
     def changeSelectedTableTel(self, selected, deselected):
         listTelefonos = selected.model().mylist
         self.telefonoSelected = ()
@@ -304,60 +356,63 @@ class PestaniaCliente():
         self.winPrincipal.tvTelefonos_c.setEnabled(False)
 
         self.winPrincipal.btnGuardar_c.setEnabled(False)
+        self.winPrincipal.btnBorrar_c.setEnabled(False)
+
 
     def updateTelefono(self):
 
         listTelefono = []
-        listTelefono = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()
+        if self.winPrincipal.tvTelefonos_c.model() != None and \
+                        len(self.winPrincipal.tvTelefonos_c.model().mylist) > 0:
+            listTelefono = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()
 
-        estado = ''
-        telNew = Telefono()
-        if len(listTelefono) > 0:
-            if len(self.listTelefonosInit) > 0:
+            estado = ''
+            telNew = Telefono()
+            if len(listTelefono) > 0:
+                if len(self.listTelefonosInit) > 0:
 
-                listTelInit = list(self.listTelefonosInit)
-                parche = (listTelefono[0][0], listTelefono[0][1], str(listTelefono[0][2]))
-                listTelefono[0] = parche
-                #Recorre la lista de telefono inicial
-                for telInit in listTelInit:
-                    #recorre la lista de telefonos nueva
-                    for tel in listTelefono:
-                        telNew.setIdPersona(self.cliente.getIdPersona())
-                        telNew.setIdTelefono(tel[0])
-                        telNew.setTipo(tel[1])
-                        if tel[2] == "":
-                            estado = 'DEL'
-                            break
-                        else:
-                            telNew.setTelefono(tel[2])
+                    listTelInit = list(self.listTelefonosInit)
+                    parche = (listTelefono[0][0], listTelefono[0][1], str(listTelefono[0][2]))
+                    listTelefono[0] = parche
+                    #Recorre la lista de telefono inicial
+                    for telInit in listTelInit:
+                        #recorre la lista de telefonos nueva
+                        for tel in listTelefono:
+                            telNew.setIdPersona(self.cliente.getIdPersona())
+                            telNew.setIdTelefono(tel[0])
+                            telNew.setTipo(tel[1])
+                            if tel[2] == "":
+                                estado = 'DEL'
+                                break
+                            else:
+                                telNew.setTelefono(tel[2])
 
-                        if tel[0] == 0:
-                            estado = 'INS'
-                            break
-
-                        if telInit[0] == tel[0]:
-                            if telInit[1] != tel[1] or telInit[2] != tel[2]:
-                                estado = 'UPD'
+                            if tel[0] == 0:
+                                estado = 'INS'
                                 break
 
-                    if estado == 'UPD':
-                        self.conexionTelefono.modificarTelefono(telNew)
-                    elif estado == "INS":
-                        self.conexionTelefono.insertarTelefono(telNew)
-                    elif estado == 'DEL':
-                        self.conexionTelefono.borrarTelefono(telNew)
-            #Si la lista de telefono inicial es cero
-            else:
-                #recorre la lista de telefonos nueva para agregarlos a todos
-                for telN in listTelefono:
-                    if telN[2] != '':
-                        telNew = Telefono()
-                        telNew.setIdPersona(self.cliente.getIdPersona())
-                        telNew.setIdTelefono(telN[0])
-                        telNew.setTipo(telN[1])
-                        telNew.setTelefono(telN[2])
-                        self.conexionTelefono.insertarTelefono(telNew)
+                            if telInit[0] == tel[0]:
+                                if telInit[1] != tel[1] or telInit[2] != tel[2]:
+                                    estado = 'UPD'
+                                    break
 
+                        if estado == 'UPD':
+                            self.conexionTelefono.modificarTelefono(telNew)
+                        elif estado == "INS":
+                            self.conexionTelefono.insertarTelefono(telNew)
+                        elif estado == 'DEL':
+                            self.conexionTelefono.borrarTelefono(telNew)
+                #Si la lista de telefono inicial es cero
+                else:
+                    #recorre la lista de telefonos nueva para agregarlos a todos
+                    for telN in listTelefono:
+                        if telN[2] != '':
+                            telNew = Telefono()
+                            telNew.setIdPersona(self.cliente.getIdPersona())
+                            telNew.setIdTelefono(telN[0])
+                            telNew.setTipo(telN[1])
+                            telNew.setTelefono(telN[2])
+                            self.conexionTelefono.insertarTelefono(telNew)
 
 
     def insertTelefono(self):
@@ -380,6 +435,8 @@ class PestaniaCliente():
         self.winPrincipal.tvTelefonos_c.setEnabled(True)
 
         self.winPrincipal.btnGuardar_c.setEnabled(True)
+        self.winPrincipal.btnBorrar_c.setEnabled(True)
+
 
     def onClickSumarTelefono(self):
         numTelefono = self.winPrincipal.txtTelefono_c.text()
@@ -405,7 +462,7 @@ class PestaniaCliente():
     def onClickRestarTelefono(self):
         listTabTel = []
         #listTabTel = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()
-        tipoTel = str(self.getTipoTelefono())
+        #tipoTel = str(self.getTipoTelefono())
         listTelefonosNew = []
 
         listTabTel = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()
@@ -424,15 +481,20 @@ class PestaniaCliente():
         self.winPrincipal.tvTelefonos_c.setEnabled(True)
 
         self.winPrincipal.btnGuardar_c.setEnabled(True)
+        self.winPrincipal.btnBorrar_c.setEnabled(True)
+
 
     def onClickTelefono(self):
         self.changeTipoTelefono(button='TEL')
 
+
     def onClickCelular(self):
         self.changeTipoTelefono(button='CEL')
 
+
     def onClickFax(self):
         self.changeTipoTelefono(button='FAX')
+
 
     def changeTipoTelefono(self, button):
 
@@ -464,6 +526,7 @@ class PestaniaCliente():
             self.winPrincipal.btnTelefono_c.setEnabled(True)
             self.winPrincipal.btnCelular_c.setEnabled(True)
             self.winPrincipal.btnFax_c.setEnabled(False)
+
 
     def getTipoTelefono(self):
 
@@ -511,8 +574,8 @@ class PestaniaCliente():
         #listTabTel = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()
         tipoTel = str(self.getTipoTelefono())
         listTelefonosNew = []
-        prob = self.winPrincipal.tvTelefonos_c.selectionModel()
-        prob1 = self.winPrincipal.tvTelefonos_c.model()
+        #prob = self.winPrincipal.tvTelefonos_c.selectionModel()
+        #prob1 = self.winPrincipal.tvTelefonos_c.model()
         listTabTel = list(self.winPrincipal.tvTelefonos_c.model().mylist).copy()
         """
         for lt in listTabTel:

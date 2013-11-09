@@ -27,16 +27,22 @@ class windowRubro():
         self.winRubro.btnAgregar_r.clicked.connect(self.onClickAgregar_r)
 
 
-        #Seteando tabla
-        self.cargarTabla()
-        #Seteo propiedades de la tabla
 
+        self.winRubro.txtFilterRubros_r.returnPressed.connect(self.search)
+
+
+        #Seteo propiedades de la tabla
         self.winRubro.tvRubros_r.setSortingEnabled(True)
         self.winRubro.tvRubros_r.setMouseTracking(True)
         self.winRubro.tvRubros_r.setSelectionBehavior(QAbstractItemView.SelectRows)
 
         self.winRubro.exec()
         #sys.executable(self.winRubro.exec_())
+
+
+    def search(self):
+        if self.winRubro.txtFilterRubros_r.hasFocus() is True:
+            self.cargarTabla()
 
     def onClickGuardar_r(self):
 
@@ -73,14 +79,18 @@ class windowRubro():
 
     def cargarTabla(self):
         #Seteo el dataProvider de la tabla
-        listaRubros = self.conexionRubro.selectRubro()
-        header = ['ID', 'Rubro']
-        self.tablaModel = MyTableModel(self.winRubro.tvRubros_r, listaRubros, header)
-        self.winRubro.tvRubros_r.setModel(self.tablaModel)
-        self.winRubro.tvRubros_r.selectionModel().currentChanged.connect(self.changeSelectedTable)
+        filterText = self.winRubro.txtFilterRubros_r.text()
+        listaRubros = self.conexionRubro.selectRubro(filterText)
+        if len(listaRubros) > 0:
+            header = ['ID', 'Rubro']
+            self.tablaModel = MyTableModel(self.winRubro.tvRubros_r, listaRubros, header)
+            self.winRubro.tvRubros_r.setModel(self.tablaModel)
+            self.winRubro.tvRubros_r.selectionModel().currentChanged.connect(self.changeSelectedTable)
 
-        self.winRubro.tvRubros_r.setColumnHidden(0, True)
-        self.winRubro.tvRubros_r.setColumnWidth(1, 245)
+            self.winRubro.tvRubros_r.setColumnHidden(0, True)
+            self.winRubro.tvRubros_r.setColumnWidth(1, 245)
+        else:
+            self.winRubro.tvRubros_r.setModel(None)
 
     def changeSelectedTable(self, selected, deselected):
         self.winRubro.tvRubros_r.selectRow(selected.row())

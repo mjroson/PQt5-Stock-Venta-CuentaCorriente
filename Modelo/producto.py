@@ -6,7 +6,7 @@ from Modelo.rubro import Rubro
 class Producto(object):
     def __init__(self):
 
-        self.__idProducto = ""
+        self.__idProducto = 0
         self.__nombre = ""
         self.__cantidad = 0
         self.__cantidadMinima = 0

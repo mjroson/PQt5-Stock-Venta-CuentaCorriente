@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Control de usuario</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Img/Users48.png</normaloff>../Img/Users48.png</iconset>
   </property>
   <widget class="QPushButton" name="btnSalir">
    <property name="geometry">
@@ -51,9 +55,9 @@
   <widget class="QLineEdit" name="txtUsuario">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>60</y>
-     <width>301</width>
+     <x>90</x>
+     <y>70</y>
+     <width>261</width>
      <height>31</height>
     </rect>
    </property>
@@ -69,9 +73,9 @@
   <widget class="QLineEdit" name="txtPass">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>140</y>
-     <width>301</width>
+     <x>90</x>
+     <y>160</y>
+     <width>261</width>
      <height>31</height>
     </rect>
    </property>
@@ -113,7 +117,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../Img/Entrar.gif</normaloff>../Img/Entrar.gif</iconset>
+     <normaloff>../Img/Entrar.png</normaloff>../Img/Entrar.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -126,7 +130,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>110</y>
+     <y>120</y>
      <width>121</width>
      <height>16</height>
     </rect>
@@ -168,13 +172,49 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>189</y>
+     <y>200</y>
      <width>291</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>70</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;img src=&quot;../Img/User24.png&quot; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>160</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;img src=&quot;../Img/Lock24.png&quot; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

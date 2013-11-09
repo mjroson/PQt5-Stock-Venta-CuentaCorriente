@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../../../Desktop/Pools48.png</normaloff>../../../../Desktop/Pools48.png</iconset>
+    <normaloff>../Img/Billboard48.png</normaloff>../Img/Billboard48.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">alternate-background-color: rgb(237, 255, 230);</string>
@@ -40,7 +40,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
+      <y>16</y>
       <width>1171</width>
       <height>571</height>
      </rect>
@@ -48,10 +48,27 @@
     <property name="styleSheet">
      <string notr="true">font: 75 11pt &quot;Segoe UI&quot;;</string>
     </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
     <widget class="QWidget" name="tab_Transacciones">
+     <attribute name="icon">
+      <iconset>
+       <normalon>../Img/Shoppingbag32.png</normalon>
+      </iconset>
+     </attribute>
      <attribute name="title">
       <string>Transacciones</string>
      </attribute>
@@ -111,10 +128,10 @@
      <widget class="QLineEdit" name="txtFilterCliente_t">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>150</x>
         <y>100</y>
         <width>201</width>
-        <height>20</height>
+        <height>22</height>
        </rect>
       </property>
       <property name="font">
@@ -158,7 +175,7 @@
       </item>
       <item>
        <property name="text">
-        <string>Email</string>
+        <string>Nombre</string>
        </property>
       </item>
      </widget>
@@ -190,10 +207,10 @@
      <widget class="QLineEdit" name="txtFilterProducto_t">
       <property name="geometry">
        <rect>
-        <x>580</x>
+        <x>610</x>
         <y>100</y>
         <width>201</width>
-        <height>20</height>
+        <height>22</height>
        </rect>
       </property>
       <property name="font">
@@ -242,11 +259,6 @@
       </item>
       <item>
        <property name="text">
-        <string>Rubro</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
         <string>Precio de Venta</string>
        </property>
       </item>
@@ -283,7 +295,7 @@
        <rect>
         <x>10</x>
         <y>310</y>
-        <width>1141</width>
+        <width>1111</width>
         <height>131</height>
        </rect>
       </property>
@@ -323,8 +335,8 @@
      <widget class="QPushButton" name="btnRestarProducto_t">
       <property name="geometry">
        <rect>
-        <x>1120</x>
-        <y>450</y>
+        <x>1130</x>
+        <y>310</y>
         <width>21</width>
         <height>23</height>
        </rect>
@@ -363,7 +375,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../Img/guardar.png</normaloff>../Img/guardar.png</iconset>
+        <normaloff>../Img/Accept32.png</normaloff>../Img/Accept32.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -398,7 +410,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+        <normaloff>../Img/cancelar.png</normaloff>../Img/cancelar.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -565,34 +577,120 @@
        <bool>false</bool>
       </attribute>
      </widget>
-     <widget class="QLabel" name="lblTotal">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>460</y>
-        <width>46</width>
-        <height>13</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>0,00</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>460</y>
-        <width>121</width>
+        <x>800</x>
+        <y>450</y>
+        <width>201</width>
         <height>16</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 16pt &quot;Franklin Gothic Demi&quot;;</string>
+      </property>
       <property name="text">
-       <string>Total :  ..................$</string>
+       <string>Total :  ..................     $</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;IMG SRC=&quot;../Img/buscar.png&quot; width=&quot;16&quot; height=&quot;16&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>100</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;IMG SRC=&quot;../Img/buscar.png&quot; width=&quot;16&quot; height=&quot;16&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cbEstado_t">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>450</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Pagado</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTotal">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>447</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 16pt &quot;Franklin Gothic Demi&quot;;</string>
+      </property>
+      <property name="text">
+       <string>0.00</string>
       </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_Pagos">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>../Img/pago.png</normaloff>../Img/pago.png</iconset>
+     </attribute>
      <attribute name="title">
       <string>Pagos</string>
      </attribute>
@@ -600,9 +698,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>50</y>
-        <width>1141</width>
-        <height>211</height>
+        <y>120</y>
+        <width>501</width>
+        <height>401</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -624,8 +722,8 @@
      <widget class="QTableView" name="tvDetalleTransaccion_pag">
       <property name="geometry">
        <rect>
-        <x>585</x>
-        <y>301</y>
+        <x>570</x>
+        <y>50</y>
         <width>571</width>
         <height>161</height>
        </rect>
@@ -672,7 +770,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../Img/guardar.png</normaloff>../Img/guardar.png</iconset>
+        <normaloff>../Img/Accept32.png</normaloff>../Img/Accept32.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -707,7 +805,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+        <normaloff>../Img/cancelar.png</normaloff>../Img/cancelar.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -719,10 +817,10 @@
      <widget class="QLineEdit" name="txtFilterPagos_pag">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>20</y>
+        <x>150</x>
+        <y>80</y>
         <width>201</width>
-        <height>20</height>
+        <height>22</height>
        </rect>
       </property>
       <property name="font">
@@ -741,8 +839,8 @@
      <widget class="QComboBox" name="cbFilterCliente_pag">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>20</y>
+        <x>20</x>
+        <y>80</y>
         <width>91</width>
         <height>22</height>
        </rect>
@@ -761,20 +859,20 @@
       </property>
       <item>
        <property name="text">
-        <string>Persona</string>
+        <string>Apellido</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Fecha</string>
+        <string>Nombre</string>
        </property>
       </item>
      </widget>
      <widget class="QLabel" name="label1_pag">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>310</y>
+        <x>670</x>
+        <y>320</y>
         <width>71</width>
         <height>21</height>
        </rect>
@@ -795,8 +893,8 @@
      <widget class="QLabel" name="label4_pag">
       <property name="geometry">
        <rect>
-        <x>420</x>
-        <y>310</y>
+        <x>550</x>
+        <y>20</y>
         <width>151</width>
         <height>21</height>
        </rect>
@@ -817,8 +915,8 @@
      <widget class="QLabel" name="label3_pag">
       <property name="geometry">
        <rect>
-        <x>43</x>
-        <y>370</y>
+        <x>613</x>
+        <y>380</y>
         <width>121</width>
         <height>21</height>
        </rect>
@@ -836,11 +934,11 @@
        <string>Forma de pago : </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txtMonto_gt">
+     <widget class="QLineEdit" name="txtMonto_pag">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>310</y>
+        <x>800</x>
+        <y>320</y>
         <width>121</width>
         <height>20</height>
        </rect>
@@ -861,8 +959,8 @@
      <widget class="QComboBox" name="cbFormaPago_pag">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>370</y>
+        <x>760</x>
+        <y>380</y>
         <width>161</width>
         <height>22</height>
        </rect>
@@ -898,8 +996,8 @@
      <widget class="QLabel" name="label2_pag">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>310</y>
+        <x>770</x>
+        <y>320</y>
         <width>16</width>
         <height>21</height>
        </rect>
@@ -920,9 +1018,193 @@
      <widget class="Line" name="line1_pag">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>520</x>
+        <y>20</y>
+        <width>21</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>80</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;IMG SRC=&quot;../Img/buscar.png&quot; width=&quot;16&quot; height=&quot;16&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label3_pag_2">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>230</y>
+        <width>171</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Total de deuda :           $</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTotalDeuda_pag">
+      <property name="geometry">
+       <rect>
+        <x>1010</x>
+        <y>230</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>0.00</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
         <y>270</y>
-        <width>1161</width>
+        <width>591</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbCobranza_pag">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>10</y>
+        <width>81</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Cobranzas</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="rbPago_pag">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>81</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Pagos</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label1_t_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Tipo de Pago : </string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>501</width>
         <height>16</height>
        </rect>
       </property>
@@ -932,6 +1214,11 @@
      </widget>
     </widget>
     <widget class="QWidget" name="tab_Productos">
+     <attribute name="icon">
+      <iconset>
+       <normalon>../Img/Shoppingcart32.png</normalon>
+      </iconset>
+     </attribute>
      <attribute name="title">
       <string>Productos</string>
      </attribute>
@@ -987,11 +1274,6 @@
         <string>Rubro</string>
        </property>
       </item>
-      <item>
-       <property name="text">
-        <string>Precio Venta</string>
-       </property>
-      </item>
      </widget>
      <widget class="QLineEdit" name="txtFilterProductos_p">
       <property name="geometry">
@@ -999,7 +1281,7 @@
         <x>150</x>
         <y>20</y>
         <width>201</width>
-        <height>20</height>
+        <height>22</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1697,11 +1979,14 @@
      <widget class="QCheckBox" name="cbInactivo_p">
       <property name="geometry">
        <rect>
-        <x>1040</x>
+        <x>1080</x>
         <y>30</y>
         <width>91</width>
         <height>17</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
       </property>
       <property name="text">
        <string>Inactivos</string>
@@ -1710,11 +1995,14 @@
      <widget class="QCheckBox" name="cbSinStock_p">
       <property name="geometry">
        <rect>
-        <x>1040</x>
+        <x>1080</x>
         <y>10</y>
         <width>101</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
       </property>
       <property name="text">
        <string>Sin stock</string>
@@ -1723,8 +2011,39 @@
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;IMG SRC=&quot;../Img/buscar.png&quot; width=&quot;16&quot; height=&quot;16&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_Clientes">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>../Img/cliente.png</normaloff>../Img/cliente.png</iconset>
+     </attribute>
      <attribute name="title">
       <string>Clientes</string>
      </attribute>
@@ -1734,7 +2053,7 @@
         <x>150</x>
         <y>20</y>
         <width>201</width>
-        <height>20</height>
+        <height>22</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1760,7 +2079,7 @@
       </item>
       <item>
        <property name="text">
-        <string>Email</string>
+        <string>Nombre</string>
        </property>
       </item>
      </widget>
@@ -2388,12 +2707,101 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+         <normaloff>../Img/cancelar.png</normaloff>../Img/cancelar.png</iconset>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbEstado_c">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>120</y>
+         <width>131</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>ACTIVO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>INACTIVO</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label11_p_3">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>120</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Estado :</string>
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;IMG SRC=&quot;../Img/buscar.png&quot; width=&quot;16&quot; height=&quot;16&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cbInactivo_c">
+      <property name="geometry">
+       <rect>
+        <x>1080</x>
+        <y>30</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Inactivos</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_Proovedores">
+     <attribute name="icon">
+      <iconset>
+       <normaloff>../Img/proveedor.png</normaloff>../Img/proveedor.png</iconset>
+     </attribute>
      <attribute name="title">
       <string>Proveedores</string>
      </attribute>
@@ -2416,7 +2824,7 @@
       </item>
       <item>
        <property name="text">
-        <string>Email</string>
+        <string>Nombre</string>
        </property>
       </item>
      </widget>
@@ -2467,7 +2875,7 @@
         <x>150</x>
         <y>20</y>
         <width>201</width>
-        <height>20</height>
+        <height>22</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -3089,22 +3497,112 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+         <normaloff>../Img/cancelar.png</normaloff>../Img/cancelar.png</iconset>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cbEstado_prov">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>130</y>
+         <width>131</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>ACTIVO</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>INACTIVO</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label11_p_4">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>130</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>11</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Estado :</string>
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;IMG SRC=&quot;../Img/buscar.png&quot; width=&quot;16&quot; height=&quot;16&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cbInactivo_prov">
+      <property name="geometry">
+       <rect>
+        <x>1080</x>
+        <y>30</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Inactivos</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_Usuarios">
+     <attribute name="icon">
+      <iconset>
+       <normalon>../Img/User32.png</normalon>
+      </iconset>
+     </attribute>
      <attribute name="title">
       <string>Usuarios</string>
      </attribute>
-     <widget class="QLineEdit" name="txtFilterUsuario_u">
+     <widget class="QLineEdit" name="txtFilterUsuarios_u">
       <property name="geometry">
        <rect>
         <x>150</x>
         <y>20</y>
         <width>201</width>
-        <height>20</height>
+        <height>22</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -3474,6 +3972,9 @@
        </property>
        <property name="styleSheet">
         <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
        </property>
       </widget>
       <widget class="QLabel" name="label7_u">
@@ -3863,12 +4364,44 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../Img/borrar.png</normaloff>../Img/borrar.png</iconset>
+         <normaloff>../Img/cancelar.png</normaloff>../Img/cancelar.png</iconset>
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>21</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>11</pointsize>
+        <weight>9</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;IMG SRC=&quot;../Img/buscar.png&quot; width=&quot;16&quot; height=&quot;16&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_Estadisticas">
+     <attribute name="icon">
+      <iconset>
+       <normalon>../Img/Pools48.png</normalon>
+      </iconset>
+     </attribute>
      <attribute name="title">
       <string>Estadisticas</string>
      </attribute>
@@ -3877,10 +4410,10 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>10</y>
-      <width>81</width>
-      <height>16</height>
+      <x>970</x>
+      <y>2</y>
+      <width>41</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -3892,14 +4425,19 @@
      </font>
     </property>
     <property name="text">
-     <string>Usuario :</string>
+     <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;IMG SRC=&quot;../Img/User32.png&quot; height=&quot;22&quot; width=&quot;22&quot;&gt; ...
+&lt;/body&gt;
+&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="lblNombreUsuario">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>10</y>
+      <x>1020</x>
+      <y>11</y>
       <width>81</width>
       <height>16</height>
      </rect>
@@ -3919,19 +4457,34 @@
    <widget class="QPushButton" name="btnNotification">
     <property name="geometry">
      <rect>
-      <x>1150</x>
-      <y>10</y>
-      <width>31</width>
+      <x>1133</x>
+      <y>7</y>
+      <width>41</width>
       <height>23</height>
      </rect>
     </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(175, 231, 196);
-font: 75 9pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(255, 197, 174);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);
+font: 75 12pt &quot;Terminal&quot;;</string>
     </property>
     <property name="text">
      <string>0</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Img/Alert16.png</normaloff>../Img/Alert16.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>11</width>
+      <height>11</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
@@ -3949,11 +4502,12 @@ color: rgb(255, 197, 174);</string>
      <string>Archivo</string>
     </property>
     <addaction name="actionTransacciones"/>
+    <addaction name="actionPagos"/>
     <addaction name="actionProductos"/>
     <addaction name="actionClientes"/>
     <addaction name="actionProveedores"/>
-    <addaction name="actionEstaditicas"/>
     <addaction name="actionUsuarios"/>
+    <addaction name="actionEstaditicas"/>
     <addaction name="separator"/>
     <addaction name="actionCerrarSesion"/>
     <addaction name="separator"/>
@@ -3966,7 +4520,16 @@ color: rgb(255, 197, 174);</string>
     <addaction name="actionManual_de_uso"/>
     <addaction name="actionReportar_error"/>
    </widget>
+   <widget class="QMenu" name="menuGenerar_Listado">
+    <property name="title">
+     <string>Generar Listado</string>
+    </property>
+    <addaction name="actionClientesDeudores"/>
+    <addaction name="actionProductos_sin_stock"/>
+    <addaction name="actionDeudas_Proveedores"/>
+   </widget>
    <addaction name="menuProbando"/>
+   <addaction name="menuGenerar_Listado"/>
    <addaction name="menuAyuda"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -3994,53 +4557,129 @@ color: rgb(255, 197, 174);</string>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionManual_de_uso">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/File32.png</normaloff>../Img/File32.png</iconset>
+   </property>
    <property name="text">
     <string>Manual de uso</string>
    </property>
   </action>
   <action name="actionReportar_error">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/File_info48.png</normaloff>../Img/File_info48.png</iconset>
+   </property>
    <property name="text">
     <string>Reportar error</string>
    </property>
   </action>
   <action name="actionTransacciones">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/Shoppingbag32.png</normaloff>../Img/Shoppingbag32.png</iconset>
+   </property>
    <property name="text">
     <string>Transacciones</string>
    </property>
   </action>
   <action name="actionProductos">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/Shoppingcart32.png</normaloff>../Img/Shoppingcart32.png</iconset>
+   </property>
    <property name="text">
     <string>Productos</string>
    </property>
   </action>
   <action name="actionClientes">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/cliente.png</normaloff>../Img/cliente.png</iconset>
+   </property>
    <property name="text">
     <string>Clientes</string>
    </property>
   </action>
   <action name="actionProveedores">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/proveedor.png</normaloff>../Img/proveedor.png</iconset>
+   </property>
    <property name="text">
     <string>Proveedores</string>
    </property>
   </action>
   <action name="actionEstaditicas">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/Pools48.png</normaloff>../Img/Pools48.png</iconset>
+   </property>
    <property name="text">
     <string>Estaditicas</string>
    </property>
   </action>
   <action name="actionUsuarios">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/User32.png</normaloff>../Img/User32.png</iconset>
+   </property>
    <property name="text">
     <string>Usuarios</string>
    </property>
   </action>
   <action name="actionCerrarSesion">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/Delete_user32.png</normaloff>../Img/Delete_user32.png</iconset>
+   </property>
    <property name="text">
     <string>Cerrar Sesion</string>
    </property>
   </action>
   <action name="actionSalir">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/Salir.png</normaloff>../Img/Salir.png</iconset>
+   </property>
    <property name="text">
     <string>Salir</string>
+   </property>
+  </action>
+  <action name="actionPagos">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/pago.png</normaloff>../Img/pago.png</iconset>
+   </property>
+   <property name="text">
+    <string>Pagos</string>
+   </property>
+  </action>
+  <action name="actionClientesDeudores">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/list.png</normaloff>../Img/list.png</iconset>
+   </property>
+   <property name="text">
+    <string>ClientesDeudores</string>
+   </property>
+  </action>
+  <action name="actionProductos_sin_stock">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/list.png</normaloff>../Img/list.png</iconset>
+   </property>
+   <property name="text">
+    <string>Productos sin stock</string>
+   </property>
+  </action>
+  <action name="actionDeudas_Proveedores">
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/list.png</normaloff>../Img/list.png</iconset>
+   </property>
+   <property name="text">
+    <string>Deudas Proveedores</string>
    </property>
   </action>
  </widget>
@@ -4058,7 +4697,7 @@ color: rgb(255, 197, 174);</string>
   <tabstop>btnAceptar_t</tabstop>
   <tabstop>txtFilterPagos_pag</tabstop>
   <tabstop>tvCuentaCorriente_pag</tabstop>
-  <tabstop>txtMonto_gt</tabstop>
+  <tabstop>txtMonto_pag</tabstop>
   <tabstop>cbFormaPago_pag</tabstop>
   <tabstop>tvDetalleTransaccion_pag</tabstop>
   <tabstop>btnAceptar_pag</tabstop>
@@ -4102,7 +4741,7 @@ color: rgb(255, 197, 174);</string>
   <tabstop>btnSumarTelefono_prov</tabstop>
   <tabstop>tvTelefonos_prov</tabstop>
   <tabstop>btnGuardar_prov</tabstop>
-  <tabstop>txtFilterUsuario_u</tabstop>
+  <tabstop>txtFilterUsuarios_u</tabstop>
   <tabstop>tvUsuarios_u</tabstop>
   <tabstop>txtNombre_u</tabstop>
   <tabstop>txtApellido_u</tabstop>

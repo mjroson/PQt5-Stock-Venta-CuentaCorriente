@@ -24,7 +24,7 @@ class PestaniaUsuario():
 
 
     def configInit(self):
-
+        self.limpiarCampos()
         #Configurando botones Generales
         self.winPrincipal.btnAgregar_u.clicked.connect(self.onClickAgregar_u)
         self.winPrincipal.btnGuardar_u.clicked.connect(self.onClickGuardar_u)
@@ -43,9 +43,9 @@ class PestaniaUsuario():
         self.winPrincipal.btnCelular_u.clicked.connect(self.onClickCelular)
         self.winPrincipal.btnFax_u.clicked.connect(self.onClickFax)
 
+        self.winPrincipal.txtFilterUsuarios_u.returnPressed.connect(self.search)
 
         #Seteando model y propieades de la tabla
-        self.cargarTabla()
         self.winPrincipal.tvUsuarios_u.setSortingEnabled(True)
         self.winPrincipal.tvUsuarios_u.setMouseTracking(True)
         self.winPrincipal.tvUsuarios_u.setSelectionBehavior(QAbstractItemView.SelectRows)
@@ -54,6 +54,30 @@ class PestaniaUsuario():
         self.winPrincipal.tvTelefonos_u.setSortingEnabled(True)
         self.winPrincipal.tvTelefonos_u.setMouseTracking(True)
         self.winPrincipal.tvTelefonos_u.setSelectionBehavior(QAbstractItemView.SelectRows)
+
+        self.winPrincipal.txtFilterUsuarios_u.setFocus(True)
+
+    def finish(self):
+        self.winPrincipal.btnAgregar_u.disconnect()
+        self.winPrincipal.btnBorrar_u.disconnect()
+        self.winPrincipal.btnModificar_u.disconnect()
+        self.winPrincipal.btnGuardar_u.disconnect()
+
+        self.winPrincipal.btnCancelarTelefono_u.disconnect()
+        self.winPrincipal.btnSumarTelefono_u.disconnect()
+        self.winPrincipal.btnRestarTelefono_u.disconnect()
+
+        self.winPrincipal.btnCelular_u.disconnect()
+        self.winPrincipal.btnFax_u.disconnect()
+        self.winPrincipal.btnTelefono_u.disconnect()
+
+        self.winPrincipal.tvTelefonos_u.disconnect()
+        self.winPrincipal.tvUsuarios_u.disconnect()
+
+    def search(self):
+        if self.winPrincipal.txtFilterUsuarios_u.hasFocus() is True:
+            self.cargarTabla()
+
 
     def onClickAgregar_u(self):
         self.estado = 'AGREGAR'
@@ -123,7 +147,17 @@ class PestaniaUsuario():
 
 
     def cargarTabla(self):
-        listaUsuarios = self.conexionUsuario.selectUsuario()
+        parameter = self.winPrincipal.txtFilterUsuarios_u.text()
+        typeParameter = ''
+
+        if self.winPrincipal.cbFilterUsuario_u.currentText() == 'Apellido':
+            typeParameter = 'u.apellido'
+        if self.winPrincipal.cbFilterUsuario_u.currentText() == 'Usuario':
+            typeParameter = 'u.usuario'
+        else:
+            typeParameter = 'u.tipo'
+
+        listaUsuarios = self.conexionUsuario.selectUsuario(typeParameter, parameter)
         if len(listaUsuarios) > 0:
 
             header = ['ID', 'Nombre', 'Apellido', 'Usuario', 'Tipo', 'Contraseña', 'Email','Direccion', 'N°', 'P', 'D',
@@ -145,6 +179,8 @@ class PestaniaUsuario():
             self.winPrincipal.tvUsuarios_u.setColumnHidden(10, True)
             self.winPrincipal.tvUsuarios_u.setColumnHidden(11, True)
             self.winPrincipal.tvUsuarios_u.setColumnHidden(12, True)
+        else:
+            self.winPrincipal.tvUsuarios_u.setModel(None)
 
 
     def changeSelectedTable(self, selected, deselected):
@@ -247,6 +283,7 @@ class PestaniaUsuario():
         self.winPrincipal.txtDPiso_u.setText('')
         self.winPrincipal.txtDDpto_u.setText('')
         self.winPrincipal.tvTelefonos_u.setModel(None)
+        self.winPrincipal.txtFilterUsuarios_u.setText('')
 
     def setCampos(self):
         self.winPrincipal.txtApellido_u.setText(str(self.usuario.getApellido()))
@@ -328,6 +365,7 @@ class PestaniaUsuario():
         self.winPrincipal.tvTelefonos_u.setEnabled(False)
 
         self.winPrincipal.btnGuardar_u.setEnabled(False)
+        self.winPrincipal.btnBorrar_u.setEnabled(False)
 
     def updateTelefono(self):
 
@@ -404,6 +442,7 @@ class PestaniaUsuario():
         self.winPrincipal.tvTelefonos_u.setEnabled(True)
 
         self.winPrincipal.btnGuardar_u.setEnabled(True)
+        self.winPrincipal.btnBorrar_u.setEnabled(True)
 
     def onClickSumarTelefono(self):
         numTelefono = self.winPrincipal.txtTelefono_u.text()
@@ -447,6 +486,7 @@ class PestaniaUsuario():
         self.winPrincipal.tvTelefonos_u.setEnabled(True)
 
         self.winPrincipal.btnGuardar_u.setEnabled(True)
+        self.winPrincipal.btnBorrar_u.setEnabled(True)
 
     def onClickTelefono(self):
         self.changeTipoTelefono(button='TEL')

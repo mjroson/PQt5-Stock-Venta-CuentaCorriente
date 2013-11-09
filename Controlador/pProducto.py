@@ -25,6 +25,9 @@ class PestaniaProducto():
         self.estado = ""
         self.conexionProducto = conexionProducto()
 
+        self.completerRubro = QCompleter()
+        self.completerMarca = QCompleter()
+        self.completerProveedor = QCompleter()
         self.configInit()
 
 
@@ -39,7 +42,9 @@ class PestaniaProducto():
         self.winPrincipal.btnRubro_p.clicked.connect(windowRubro)
         self.winPrincipal.btnMarca_p.clicked.connect(windowMarca)
 
-        self.cargarTabla()
+        self.winPrincipal.txtFilterProductos_p.returnPressed.connect(self.search)
+
+        #self.cargarTabla()
         self.winPrincipal.tvProductos_p.setMouseTracking(True)
         self.winPrincipal.tvProductos_p.setSelectionBehavior(QAbstractItemView.SelectRows)
 
@@ -47,8 +52,20 @@ class PestaniaProducto():
         self.setCompleterRubro()
         self.setCompleterProveedor()
 
+        self.winPrincipal.txtFilterProductos_p.setFocus(True)
 
+    def finish(self):
+        self.winPrincipal.btnAgregar_p.disconnect()
+        self.winPrincipal.btnGuardar_p.disconnect()
+        self.winPrincipal.btnModificar_p.disconnect()
+        self.winPrincipal.btnBorrar_p.disconnect()
+        self.winPrincipal.btnRubro_p.disconnect()
+        self.winPrincipal.btnMarca_p.disconnect()
+        self.winPrincipal.tvProductos_p.disconnect()
 
+    def search(self):
+        if self.winPrincipal.txtFilterProductos_p.hasFocus() is True:
+            self.cargarTabla()
 
     def onClickAgregar_p(self):
         self.estado = 'AGREGAR'
@@ -108,7 +125,25 @@ class PestaniaProducto():
         self.validarBotones(button='BORRAR')
 
     def cargarTabla(self):
-        listaProductos = self.conexionProducto.selectProducto()
+
+        parameter = self.winPrincipal.txtFilterProductos_p.text()
+        typeParameter = ''
+        if self.winPrincipal.cbFilterProducto_p.currentText() == 'Nombre':
+            typeParameter = 'p.nombre'
+        elif self.winPrincipal.cbFilterProducto_p.currentText() == 'Marca':
+            typeParameter = 'm.descripcion'
+        else:
+            typeParameter = 'r.descripcion'
+
+        parameterState = 1
+        if self.winPrincipal.cbInactivo_p.isChecked() is True:
+            parameterState = 0
+
+        parameterStock = 1
+        if self.winPrincipal.cbSinStock_p.isChecked() is True:
+            parameterStock = 0
+
+        listaProductos = self.conexionProducto.selectProducto(typeParameter, parameter, parameterState, parameterStock)
 
         if len(listaProductos) > 0:
 
@@ -133,6 +168,8 @@ class PestaniaProducto():
             self.winPrincipal.tvProductos_p.setColumnWidth(12, 130)
             self.winPrincipal.tvProductos_p.setColumnHidden(13, True)
             self.winPrincipal.tvProductos_p.setColumnWidth(14, 130)
+        else:
+            self.winPrincipal.tvProductos_p.setModel(None)
 
 
 
@@ -170,7 +207,6 @@ class PestaniaProducto():
 
         self.winPrincipal.tvProductos_p.setRowHeight(deselected.row(),33)
         self.winPrincipal.tvProductos_p.setRowHeight(selected.row(),45)
-
 
         self.setCampos()
         self.winPrincipal.btnModificar_p.setEnabled(True)
@@ -235,7 +271,10 @@ class PestaniaProducto():
         self.winPrincipal.txtDescripcion_p.setText('')
         self.winPrincipal.txtRubro_p.setText('')
         self.winPrincipal.txtMarca_p.setText('')
-
+        self.completerProveedor.setCurrentRow(0)
+        self.completerRubro.setCurrentRow(0)
+        self.completerMarca.setCurrentRow(0)
+        self.winPrincipal.txtFilterProductos_p.setText('')
 
     def setCampos(self):
         self.winPrincipal.txtNombre_p.setText(self.producto.getNombre())
@@ -271,13 +310,21 @@ class PestaniaProducto():
             mensaje= "Falta ingresar Precio de Compra"
         elif self.winPrincipal.txtPrecioVenta_p.text() =='':
             mensaje= "Falta ingresar Precio de Venta"
+        elif self.completerProveedor.currentCompletion() =='':
+            mensaje= "Falta ingresar un Proveedor"
+        elif self.completerMarca.currentCompletion() == '':
+            mensaje = "Falta seleccionar la marca"
+        elif self.completerRubro.currentCompletion() == '':
+            mensaje = 'Falta seleccionar el rubro'
+        """
         elif self.completerProveedor.currentCompletion() =='' or self.completerProveedor.currentRow() == 0:
             mensaje= "Falta ingresar un Proveedor"
+
         elif self.completerMarca.currentCompletion() == '' or self.completerMarca.currentRow() == 0:
             mensaje = "Falta seleccionar la marca"
         elif self.completerRubro.currentCompletion() == '' or self.completerRubro.currentRow() == 0:
             mensaje = 'Falta seleccionar el rubro'
-
+        """
         return mensaje
 
     def setCompleterMarca(self):
@@ -290,18 +337,16 @@ class PestaniaProducto():
 
     def setCompleterRubro(self):
         listRubros = self.conexionProducto.listRubro()
-
         self.completerRubro = QCompleter(listRubros)
 
         self.completerRubro.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
-
         self.winPrincipal.txtRubro_p.setCompleter(self.completerRubro)
 
 
     def setCompleterProveedor(self):
         listProveedores = self.conexionProducto.listProveedor()
         self.completerProveedor = QCompleter(listProveedores)
-        pass
+
         self.completerProveedor.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.winPrincipal.txtProveedor_p.setCompleter(self.completerProveedor)
 

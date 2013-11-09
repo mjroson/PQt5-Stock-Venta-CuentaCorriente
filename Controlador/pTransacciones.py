@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QAbstractItemView
 import datetime
 from PyQt5.Qt import QTextDocument, QPrinter, QPrintDialog
 from PyQt5.QtWidgets import QMessageBox, QDialog
-from PyQt5.Qt import QDesktopServices, QUrl
+from PyQt5.Qt import QDesktopServices, QUrl, QAbstractItemModel
 
 
 
@@ -23,19 +23,19 @@ class PestaniaTransacciones():
         self.producto = Producto()
         self.tipoTransaccion = "VENTA"
         self.configInit()
-        self.total = 0
 
 
     def configInit(self):
+
         self.winPrincipal.rbVenta_t.clicked.connect(self.onClickVenta)
         self.winPrincipal.rbCompra_t.clicked.connect(self.onClickCompra)
 
         self.winPrincipal.btnSumarProducto_t.clicked.connect(self.agregarTransaccion)
+        self.winPrincipal.btnRestarProducto_t.clicked.connect(self.restarTransaccion)
 
         self.winPrincipal.btnAceptar_t.clicked.connect(self.onClickAceptar)
         self.winPrincipal.btnCancelar_t.clicked.connect(self.onClickCancelar)
 
-        self.cargarTablaProductos()
 
         self.winPrincipal.tvClientes_t.setSortingEnabled(True)
         self.winPrincipal.tvClientes_t.setMouseTracking(True)
@@ -49,26 +49,63 @@ class PestaniaTransacciones():
         self.winPrincipal.tvDetalleTransaccion_t.setMouseTracking(True)
         self.winPrincipal.tvDetalleTransaccion_t.setSelectionBehavior(QAbstractItemView.SelectRows)
 
+        self.winPrincipal.btnSumarProducto_t.setEnabled(False)
+        self.winPrincipal.btnRestarProducto_t.setEnabled(False)
+        self.winPrincipal.btnCancelar_t.setEnabled(False)
+        self.winPrincipal.btnAceptar_t.setEnabled(False)
+
+        self.winPrincipal.txtFilterCliente_t.setFocus(True)
+
+        self.winPrincipal.txtFilterCliente_t.returnPressed.connect(self.searchPeople)
+        self.winPrincipal.txtFilterProducto_t.returnPressed.connect(self.searchProduct)
+
+
+    def finish(self):
+        self.winPrincipal.btnAceptar_t.disconnect()
+        self.winPrincipal.btnCancelar_t.disconnect()
+        self.winPrincipal.btnRestarProducto_t.disconnect()
+        self.winPrincipal.btnSumarProducto_t.disconnect()
+        self.winPrincipal.rbVenta_t.disconnect()
+        self.winPrincipal.rbCompra_t.disconnect()
+
+    def searchProduct(self):
+
+        if self.winPrincipal.txtFilterProducto_t.hasFocus() is True:
+            self.cargarTablaProductos()
+
+
+    def searchPeople(self):
+        if self.winPrincipal.txtFilterCliente_t.hasFocus() is True:
+            if self.winPrincipal.rbCompra_t.isChecked() is True:
+                self.cargarTablaProveedores()
+            else:
+                self.cargarTablaClientes()
 
     def onClickAceptar(self):
 
         listTransaccion = list(self.winPrincipal.tvDetalleTransaccion_t.model().mylist).copy()
         subNom = ""
+        estado = 0
+        if self.winPrincipal.cbEstado_t.isChecked() is True:
+            estado = 1
         numRecibo = 0
-        if(self.tipoTransaccion == "VENTA"):
-            numRecibo = self.conexionTransacciones.cargarTransaccionVenta(listTransaccion, self.cliente)
+
+
+        if self.tipoTransaccion == "VENTA":
+            numRecibo = self.conexionTransacciones.cargarTransaccionVenta(listTransaccion, self.cliente, estado)
             subNom = 'VNT'
-        elif(self.tipoTransaccion == "COMPRA"):
-            numRecibo = self.conexionTransacciones.cargarTransaccionCompra(listTransaccion, self.proveedor)
+        elif self.tipoTransaccion == "COMPRA":
+            numRecibo = self.conexionTransacciones.cargarTransaccionCompra(listTransaccion, self.proveedor, estado)
             subNom = 'CMP'
 
         alert = QDialog()
-        confirm = QMessageBox.question(alert, "Mensaje", "¿ Desea generar factura ?", QMessageBox.Yes, QMessageBox.No)
+        confirm = QMessageBox.question(alert, "Mensaje", "¿ Desea generar Recibo ?", QMessageBox.Yes, QMessageBox.No)
         if confirm == QMessageBox.Yes:
             self.createFactura(listTransaccion, subNom, numRecibo)
 
 
         self.limpiarCampos()
+
 
     def createFactura(self, listTransaccion, subNom, idRecibo):
         hoy = str(datetime.datetime.now().year) + str(datetime.datetime.now().month) + str(datetime.datetime.now().day) + str(datetime.datetime.now().hour) + str(datetime.datetime.now().minute) + str(datetime.datetime.now().second)
@@ -264,56 +301,68 @@ class PestaniaTransacciones():
         self.winPrincipal.tvClientes_t.setModel(None)
         self.winPrincipal.tvDetalleTransaccion_t.setModel(None)
         self.winPrincipal.tvProductos_t.setModel(None)
-        self.winPrincipal.lblTotal.setText('')
+        self.winPrincipal.lblTotal.setText('0.00')
         self.winPrincipal.sbCantidadProducto_t.setValue(0)
+        self.winPrincipal.rbCompra_t.setEnabled(True)
+        self.winPrincipal.rbVenta_t.setEnabled(True)
 
+        self.winPrincipal.txtFilterCliente_t.setText('')
+        self.winPrincipal.txtFilterProducto_t.setText('')
 
 
     def onClickCancelar(self):
         self.limpiarCampos()
 
+
     def cargarTablaClientes(self):
+        parameter = self.winPrincipal.txtFilterCliente_t.text()
+
+        typeParameter = ''
         if self.winPrincipal.cbFilterCliente_t.currentText() == 'Apellido':
-            tipoParametro = 'c.apellido'
-        elif self.winPrincipal.cbFilterCliente_t.currentText() == 'Email':
-            tipoParametro = 'p.email'
-
-        parametro = self.winPrincipal.txtFilterCliente_t.text()
-
-        listaClientes = self.conexionTransacciones.selectClientes(tipoParametro, parametro)
-
-        header = ['ID','Apellido','Nombre','Email']
-        tablaModel = MyTableModel(self.winPrincipal.tvClientes_t, listaClientes, header)
-        self.winPrincipal.tvClientes_t.setModel(tablaModel)
-        self.winPrincipal.tvClientes_t.selectionModel().currentChanged.connect(self.changeSelectedTable)
+            typeParameter = 'c.apellido'
+        elif self.winPrincipal.cbFilterCliente_t.currentText() == 'Nombre':
+            typeParameter = 'p.nombre'
 
 
-        self.winPrincipal.tvClientes_t.setColumnHidden(0, True)
-        self.winPrincipal.tvClientes_t.setColumnWidth(1, 130)
-        self.winPrincipal.tvClientes_t.setColumnWidth(2, 130)
-        self.winPrincipal.tvClientes_t.setColumnWidth(3, 150)
+        listaClientes = self.conexionTransacciones.selectClientes(typeParameter, parameter)
+        if len(listaClientes) > 0:
+            header = ['ID','Apellido','Nombre','Email']
+            tablaModel = MyTableModel(self.winPrincipal.tvClientes_t, listaClientes, header)
+            self.winPrincipal.tvClientes_t.setModel(tablaModel)
+            self.winPrincipal.tvClientes_t.selectionModel().currentChanged.connect(self.changeSelectedTable)
+
+
+            self.winPrincipal.tvClientes_t.setColumnHidden(0, True)
+            self.winPrincipal.tvClientes_t.setColumnWidth(1, 130)
+            self.winPrincipal.tvClientes_t.setColumnWidth(2, 130)
+            self.winPrincipal.tvClientes_t.setColumnWidth(3, 150)
+        else:
+            self.winPrincipal.tvClientes_t.setModel(None)
 
 
     def cargarTablaProveedores(self):
+
+        parameter = self.winPrincipal.txtFilterCliente_t.text()
+
+        typeParameter = ''
         if self.winPrincipal.cbFilterCliente_t.currentText() == 'Apellido':
-            tipoParametro = 'c.apellido'
-        elif self.winPrincipal.cbFilterCliente_t.currentText() == 'Email':
-            tipoParametro = 'p.email'
+            typeParameter = 'prov.descripcion'
+        elif self.winPrincipal.cbFilterCliente_t.currentText() == 'Nombre':
+            typeParameter = 'p.nombre'
 
-        parametro = self.winPrincipal.txtFilterCliente_t.text()
+        listProveedores = self.conexionTransacciones.selectProveedores(typeParameter, parameter)
+        if len(listProveedores) > 0:
+            header = ['ID', 'Descripcion', 'Nombre', 'Email']
+            tableModel = MyTableModel(self.winPrincipal.tvClientes_t, listProveedores, header)
+            self.winPrincipal.tvClientes_t.setModel(tableModel)
+            self.winPrincipal.tvClientes_t.selectionModel().currentChanged.connect(self.changeSelectedTable)
 
-        listProveedores = self.conexionTransacciones.selectProveedores(tipoParametro, parametro)
-
-        header = ['ID', 'Descripcion', 'Nombre', 'Email']
-        tableModel = MyTableModel(self.winPrincipal.tvClientes_t, listProveedores, header)
-        self.winPrincipal.tvClientes_t.setModel(tableModel)
-        self.winPrincipal.tvClientes_t.selectionModel().currentChanged.connect(self.changeSelectedTable)
-
-        self.winPrincipal.tvClientes_t.setColumnHidden(0, True)
-        self.winPrincipal.tvClientes_t.setColumnWidth(1, 130)
-        self.winPrincipal.tvClientes_t.setColumnWidth(2, 130)
-        self.winPrincipal.tvClientes_t.setColumnWidth(3, 150)
-
+            self.winPrincipal.tvClientes_t.setColumnHidden(0, True)
+            self.winPrincipal.tvClientes_t.setColumnWidth(1, 130)
+            self.winPrincipal.tvClientes_t.setColumnWidth(2, 130)
+            self.winPrincipal.tvClientes_t.setColumnWidth(3, 150)
+        else:
+            self.winPrincipal.tvClientes_t.setModel(None)
 
 
     def changeSelectedTable(self, selected, deselected):
@@ -338,28 +387,45 @@ class PestaniaTransacciones():
             self.proveedor.setNombre(str(personaSelected[2]))
             self.proveedor.setEmail(str(personaSelected[3]))
 
-
+        self.activateButton()
 
     def cargarTablaProductos(self):
-        listProducto = self.conexionTransacciones.selectProductos()
 
-        header = ['ID', 'Nombre', 'Descripcion', 'Cant', 'P.Compra', 'P.Venta', 'Marca']
+        parameter = self.winPrincipal.txtFilterProducto_t.text()
+        typeParameter = ''
+        if self.winPrincipal.cbFilterProducto_t.currentText() == 'Nombre':
+            typeParameter = 'p.nombre'
+        elif self.winPrincipal.cbFilterProducto_t.currentText() == 'Marca':
+            typeParameter = 'm.descripcion'
+        elif self.winPrincipal.cbFilterProducto_t.currentText() == 'Precio de Venta':
+            typeParameter = 'p.pVenta'
+        else:
+            typeParameter = 'p.pCompra'
 
-        tableModel = MyTableModel(self.winPrincipal.tvProductos_t, listProducto, header)
-        self.winPrincipal.tvProductos_t.setModel(tableModel)
-        self.winPrincipal.tvProductos_t.selectionModel().currentChanged.connect(self.changeSelectedTableProducto)
+        parameterTransaccion = 'CMP'
+        if self.tipoTransaccion == "VENTA":
+            parameterTransaccion = 'VNT'
 
+        listProducto = self.conexionTransacciones.selectProductos(typeParameter, parameter, parameterTransaccion)
 
+        if len(listProducto) > 0:
+            header = ['ID', 'Nombre', 'Descripcion', 'Cant', 'P.Compra', 'P.Venta', 'Marca']
 
-        self.winPrincipal.tvProductos_t.setColumnHidden(0, True)
-        self.winPrincipal.tvProductos_t.setColumnWidth(1, 150)
-        self.winPrincipal.tvProductos_t.setColumnWidth(2, 200)
-        self.winPrincipal.tvProductos_t.setColumnWidth(3, 50)
-        self.winPrincipal.tvProductos_t.setColumnWidth(4, 80)
-        self.winPrincipal.tvProductos_t.setColumnWidth(5, 80)
-        self.winPrincipal.tvProductos_t.setColumnWidth(6, 100)
+            tableModel = MyTableModel(self.winPrincipal.tvProductos_t, listProducto, header)
+            self.winPrincipal.tvProductos_t.setModel(tableModel)
+            self.winPrincipal.tvProductos_t.selectionModel().currentChanged.connect(self.changeSelectedTableProducto)
 
-        #tvProductos_t
+            self.winPrincipal.tvProductos_t.setColumnHidden(0, True)
+            self.winPrincipal.tvProductos_t.setColumnWidth(1, 150)
+            self.winPrincipal.tvProductos_t.setColumnWidth(2, 200)
+            self.winPrincipal.tvProductos_t.setColumnWidth(3, 50)
+            self.winPrincipal.tvProductos_t.setColumnWidth(4, 80)
+            self.winPrincipal.tvProductos_t.setColumnWidth(5, 80)
+            self.winPrincipal.tvProductos_t.setColumnWidth(6, 100)
+
+        else:
+            self.winPrincipal.tvProductos_t.setModel(None)
+
 
     def changeSelectedTableProducto(self, selected, deselected):
         listProductos = selected.model().mylist
@@ -376,73 +442,159 @@ class PestaniaTransacciones():
         self.producto.setPrecioCompra(float(productoSelected[4]))
         self.producto.setPrecioVenta(float(productoSelected[5]))
 
+        self.winPrincipal.btnSumarProducto_t.setEnabled(True)
 
 
 
     def agregarTransaccion(self):
-        #tvDetalleTransaccion_t
-        #btnSumarProducto_t
         cantProducto = int(self.winPrincipal.sbCantidadProducto_t.value())
 
-        modelListTransaccion = self.winPrincipal.tvDetalleTransaccion_t.model()
-        header = ['ID', 'Cantidad','idProducto' ,'Producto', 'Descripcion', 'precio_unitario' ]
 
-        precio_unitario = 0
-        if(self.tipoTransaccion == "VENTA"):
-            precio_unitario = float(self.producto.getPrecioVenta())
+        stateProduct = True
 
-        elif(self.tipoTransaccion == "COMPRA"):
-            precio_unitario = float(self.producto.getPrecioCompra())
+        if self.tipoTransaccion == "VENTA" and cantProducto >= self.producto.getCantidad():
+            stateProduct = False
 
-        if modelListTransaccion is not None:
-            listTabPro = list(self.winPrincipal.tvDetalleTransaccion_t.model().mylist)
+        if cantProducto == 0:
+            stateProduct = False
 
-            if len(listTabPro) > 0 or listTabPro is not None:
+        if stateProduct is True and self.validateProduct() is True:
+            modelListTransaccion = self.winPrincipal.tvDetalleTransaccion_t.model()
+            header = ['ID', 'Cantidad','idProducto' ,'Producto', 'Descripcion', 'Precio Unit', 'Precio Tot' ]
+
+            precio_unitario = 0
+            if(self.tipoTransaccion == "VENTA"):
+                precio_unitario = float(self.producto.getPrecioVenta())
+
+            elif(self.tipoTransaccion == "COMPRA"):
+                precio_unitario = float(self.producto.getPrecioCompra())
+
+            if modelListTransaccion is not None:
+                listTabPro = list(self.winPrincipal.tvDetalleTransaccion_t.model().mylist)
+
+                if len(listTabPro) > 0 or listTabPro is not None:
+                    tuplaProd = ('0', str(cantProducto), str(self.producto.getIdProducto()), str(self.producto.getNombre()),
+                                str(self.producto.getDescripcion()), str(precio_unitario), str(cantProducto * precio_unitario)
+                                )
+
+                    listTabPro.append(tuplaProd)
+                    tupleTable = tuple(listTabPro)
+
+                    tableModel = MyTableModel(self.winPrincipal, tupleTable , header)
+                    self.winPrincipal.tvDetalleTransaccion_t.setModel(tableModel)
+            else:
+                lista = []
                 tuplaProd = ('0', str(cantProducto), str(self.producto.getIdProducto()), str(self.producto.getNombre()),
-                            str(self.producto.getDescripcion()), str(precio_unitario)
-                            )
+                               str(self.producto.getDescripcion()), str(precio_unitario), str(cantProducto * precio_unitario)
+                                )
+                lista.append(tuplaProd)
 
-                listTabPro.append(tuplaProd)
-                tupleTable = tuple(listTabPro)
-
-                tableModel = MyTableModel(self.winPrincipal, tupleTable , header)
+                tableModel = MyTableModel(self.winPrincipal, lista , header)
                 self.winPrincipal.tvDetalleTransaccion_t.setModel(tableModel)
-                #self.winPrincipal.tvDetalleTransaccion_t.selectionModel().currentChanged.connect(self.changeSelectedTableTransaccion)
+                self.winPrincipal.tvDetalleTransaccion_t.setColumnHidden(0, True)
+                self.winPrincipal.tvDetalleTransaccion_t.setColumnWidth(1, 80)
+                self.winPrincipal.tvDetalleTransaccion_t.setColumnHidden(2, True)
+                self.winPrincipal.tvDetalleTransaccion_t.setColumnWidth(3, 200)
+                self.winPrincipal.tvDetalleTransaccion_t.setColumnWidth(4, 653)
+                self.winPrincipal.tvDetalleTransaccion_t.setColumnWidth(5, 80)
+                self.winPrincipal.tvDetalleTransaccion_t.setColumnWidth(6, 80)
+
+                self.winPrincipal.rbCompra_t.setEnabled(False)
+                self.winPrincipal.rbVenta_t.setEnabled(False)
+
+            #self.total = (cantProducto * self.producto.getPrecioVenta()) + self.total
+
+            #self.winPrincipal.lblTotal.setText(str(self.total))
+
+            self.winPrincipal.btnCancelar_t.setEnabled(True)
+            self.winPrincipal.btnSumarProducto_t.setEnabled(False)
+
+            self.winPrincipal.sbCantidadProducto_t.setValue(0)
+
+            self.winPrincipal.tvDetalleTransaccion_t.selectionModel().currentChanged.connect(self.changeSelectedTableTransaccion)
+
+            total = float(self.winPrincipal.lblTotal.text())
+            total +=+ (cantProducto * precio_unitario)
+            self.winPrincipal.lblTotal.setText("{0:.2f}".format(total))
+            self.activateButton()
+            #self.calcularTotal()
         else:
-            lista = []
-            tuplaProd = ('0', str(cantProducto), str(self.producto.getIdProducto()), str(self.producto.getNombre()),
-                           str(self.producto.getDescripcion()), str(precio_unitario)
-                            )
-            lista.append(tuplaProd)
-
-            tableModel = MyTableModel(self.winPrincipal, lista , header)
-            self.winPrincipal.tvDetalleTransaccion_t.setModel(tableModel)
-            #self.winPrincipal.tvDetalleTransaccion_t.selectionModel().currentChanged.connect(self.changeSelectedTableTel)
-            self.winPrincipal.tvDetalleTransaccion_t.setColumnHidden(0, True)
-            self.winPrincipal.tvDetalleTransaccion_t.setColumnWidth(1, 80)
-            self.winPrincipal.tvDetalleTransaccion_t.setColumnHidden(2, True)
-            self.winPrincipal.tvDetalleTransaccion_t.setColumnWidth(3, 200)
-            self.winPrincipal.tvDetalleTransaccion_t.setColumnWidth(4, 300)
+            alert = QDialog()
+            QMessageBox.information(alert,"ERROR", "La cantidad especificada es invalida")
 
 
-        self.total = (cantProducto * self.producto.getPrecioVenta()) + self.total
+    def activateButton(self):
+        hasP = False
+        if self.proveedor.getIdProveedor() != 0 or self.cliente.getIdCliente() != 0:
+            hasP = True
+        if self.winPrincipal.tvDetalleTransaccion_t.model() is not None and hasP is True:
+            self.winPrincipal.btnAceptar_t.setEnabled(True)
 
-        self.winPrincipal.lblTotal.setText(str(self.total))
 
-        self.winPrincipal.tvClientes_t.setEnabled(False)
+    def validateProduct(self):
+        validate = True
+
+
+        if self.winPrincipal.tvDetalleTransaccion_t.model() is not None:
+            listTransacciones = self.winPrincipal.tvDetalleTransaccion_t.model().mylist
+            cant = int(len(list(self.winPrincipal.tvDetalleTransaccion_t.model().mylist).copy()))
+
+            for i in range(cant):
+
+                if listTransacciones[i][2] == str(self.producto.getIdProducto()):
+                    validate = False
+
+
+        return validate
+
+
+    def restarTransaccion(self):
+
+        listTransacciones = list(self.winPrincipal.tvDetalleTransaccion_t.model().mylist).copy()
+
+        header = ['ID', 'Cantidad','idProducto' ,'Producto', 'Descripcion', 'Precio Unit', 'Precio Tot' ]
+
+        listTransacciones.remove(self.transaccionSelected)
+
+        if len(listTransacciones) < 1:
+            self.winPrincipal.btnAceptar_t.setEnabled(False)
+            self.winPrincipal.btnCancelar_t.setEnabled(False)
+            self.winPrincipal.tvDetalleTransaccion_t.setModel(None)
+        else:
+            tableTelModel = MyTableModel(self.winPrincipal, listTransacciones, header)
+            self.winPrincipal.tvDetalleTransaccion_t.setModel(tableTelModel)
+            self.winPrincipal.tvDetalleTransaccion_t.selectionModel().currentChanged.connect(self.changeSelectedTableTransaccion)
+
+
+        total = float(self.winPrincipal.lblTotal.text())
+        total -= float(self.transaccionSelected[6])
+        self.winPrincipal.lblTotal.setText("{0:.2f}".format(total))
+
+        self.winPrincipal.btnRestarProducto_t.setEnabled(False)
+        #self.calcularTotal()
+
 
     def changeSelectedTableTransaccion(self, selected, deselected):
-        pass
+        listTransacciones = selected.model().mylist
+        self.transaccionSelected = ()
+        self.transaccionSelected = listTransacciones[selected.row()]
+
+        self.telefonoSelectedRow = selected.row()
+
+        self.winPrincipal.btnRestarProducto_t.setEnabled(True)
+
 
     def onClickVenta(self):
         self.winPrincipal.label2_t.setText('Cliente')
-        self.cargarTablaClientes()
         self.tipoTransaccion = "VENTA"
+
+
 
     def onClickCompra(self):
         self.winPrincipal.label2_t.setText('Proovedor')
-        self.cargarTablaProveedores()
         self.tipoTransaccion = "COMPRA"
+
+
 
 
     def selecClientes(self):
@@ -454,3 +606,23 @@ class PestaniaTransacciones():
         parametro = self.winPrincipal.txtFilterCliente_t.text()
 
         self.conexionTransacciones.selectClientes(tipoParametro, parametro)
+
+
+    def calcularTotal(self):
+        listTransacciones = []
+        listTransacciones = list(self.winPrincipal.tvDetalleTransaccion_t.model().mylist).copy()
+
+        tupleParche = listTransacciones[0]
+        tupleParche = ('1', tupleParche[1], tupleParche[2], tupleParche[3], tupleParche[4], tupleParche[5], tupleParche[6])
+        listTransacciones[0] = tupleParche
+        if len(listTransacciones) > 0:
+            total = 0
+
+            for transaccion in listTransacciones:
+
+                total = total + float(transaccion[6])
+
+
+            self.winPrincipal.lblTotal.setText(str(total))
+        else:
+            self.winPrincipal.lblTotal.setText('0,00')

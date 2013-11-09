@@ -14,17 +14,28 @@ class conexionProducto(object):
         self.rubro = Rubro()
         self.marca = Marca()
 
-    def selectProducto(self):
+    def selectProducto(self, typeParameter, parameter, parameterState, parameterStock):
         query = """
-                    SELECT p.idproductos, p.nombre, p.descripcion, p.pCompra, p.pVenta, p.genero, p.estado, p.cantidad,
-                            p.cant_minima, m.idmarcas, m.descripcion, r.idrubros, r.descripcion,
-                            prov.idproveedores, prov.descripcion
+                    SELECT p.idproductos, p.nombre, p.descripcion, TRUNCATE(p.pCompra, 2), TRUNCATE(p.pVenta, 2),
+                            p.genero, p.estado, p.cantidad, p.cant_minima, m.idmarcas, m.descripcion, r.idrubros,
+                            r.descripcion, prov.idproveedores, prov.descripcion
                     FROM productos p, marcas m , rubros r, proveedores prov
                     WHERE p.rubros_idrubros = r.idrubros and p.marcas_idmarcas = m.idmarcas and
-                        p.proveedores_idproveedores = prov.idproveedores
+                        p.proveedores_idproveedores = prov.idproveedores and """+ typeParameter + """ LIKE %s and
+                        p.estado LIKE %s
                 """
+        param = parameter + '%'
+
+        paramState = '1'
+        if parameterState == 0:
+            paramState = '%'
+
+        if parameterStock == 1:
+            query = query + " and p.cantidad > 0"
+
+        values = (param, paramState)
         self.conexion.abrirConexion()
-        self.conexion.cursor.execute(query)
+        self.conexion.cursor.execute(query, values)
         listProducto = self.conexion.cursor.fetchall()
         self.conexion.cerrarConexion()
         return listProducto

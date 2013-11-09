@@ -26,7 +26,7 @@ class windowMarca():
         self.winMarca.btnBorrar_m.clicked.connect(self.onClickBorrar_m)
         self.winMarca.btnAgregar_m.clicked.connect(self.onClickAgregar_m)
 
-        self.cargarTabla()
+        self.winMarca.txtFilterMarcas_m.returnPressed.connect(self.search)
 
         self.winMarca.tvMarcas_m.setSortingEnabled(True)
         self.winMarca.tvMarcas_m.setMouseTracking(True)
@@ -34,7 +34,9 @@ class windowMarca():
 
         self.winMarca.exec()
 
-
+    def search(self):
+        if self.winMarca.txtFilterMarcas_m.hasFocus() is True:
+            self.cargarTabla()
 
     def onClickGuardar_m(self):
 
@@ -68,17 +70,21 @@ class windowMarca():
         self.validarBotones(button='BORRAR')
 
     def cargarTabla(self):
-        listaMarcas = self.conexionMarca.selectMarca()
-        #Creo la cabecera
-        header = ['ID', 'Marca']
-        #Creo el modelo
-        self.tablaModel = MyTableModel(self.winMarca.tvMarcas_m, listaMarcas, header)
-        #Seteo el modelo
-        self.winMarca.tvMarcas_m.setModel(self.tablaModel)
-        self.winMarca.tvMarcas_m.selectionModel().currentChanged.connect(self.changeSelectedTable)
+        textFilter = self.winMarca.txtFilterMarcas_m.text()
+        listaMarcas = self.conexionMarca.selectMarca(textFilter)
+        if len(listaMarcas) > 0:
+            #Creo la cabecera
+            header = ['ID', 'Marca']
+            #Creo el modelo
+            self.tablaModel = MyTableModel(self.winMarca.tvMarcas_m, listaMarcas, header)
+            #Seteo el modelo
+            self.winMarca.tvMarcas_m.setModel(self.tablaModel)
+            self.winMarca.tvMarcas_m.selectionModel().currentChanged.connect(self.changeSelectedTable)
 
-        self.winMarca.tvMarcas_m.setColumnHidden(0, True)
-        self.winMarca.tvMarcas_m.setColumnWidth(1, 245)
+            self.winMarca.tvMarcas_m.setColumnHidden(0, True)
+            self.winMarca.tvMarcas_m.setColumnWidth(1, 245)
+        else:
+            self.winMarca.tvMarcas_m.setModel(None)
 
     def changeSelectedTable(self, selected, deselected):
         self.winMarca.tvMarcas_m.selectRow(selected.row())

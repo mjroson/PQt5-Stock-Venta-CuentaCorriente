@@ -7,6 +7,7 @@ class Cliente(Persona):
         Persona.__init__(self)
         self.__apellido = ""
         self.__idCliente = 0
+        self.__estado = 0
 
     def setApellido(self, apellido):
         self.__apellido = apellido
@@ -19,3 +20,9 @@ class Cliente(Persona):
 
     def getIdCliente(self):
         return self.__idCliente
+
+    def setEstado(self, estado):
+        self.__estado = estado
+
+    def getEstado(self):
+        return self.__estado

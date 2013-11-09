@@ -165,10 +165,10 @@
   <widget class="QLineEdit" name="txtFilterRubros_r">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>50</x>
      <y>20</y>
      <width>121</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -206,6 +206,12 @@
      <height>301</height>
     </rect>
    </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>
    </attribute>
@@ -227,6 +233,33 @@
    </property>
    <property name="styleSheet">
     <string notr="true">font: 9pt &quot;MS Shell Dlg 2&quot;;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>21</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;
+&lt;head/&gt;
+&lt;body&gt;
+&lt;IMG SRC=&quot;../Img/buscar.png&quot; width=&quot;16&quot; height=&quot;16&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

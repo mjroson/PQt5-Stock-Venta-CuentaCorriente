@@ -12,6 +12,7 @@ class Proveedor(Persona):
         self.__idProveedor = 0
         self.__descripcion = ""
         self.__web = ""
+        self.__estado = 0
 
     def setIdProveedor(self, idPProveedor):
         self.__idProveedor = idPProveedor
@@ -30,3 +31,9 @@ class Proveedor(Persona):
 
     def getWeb(self):
         return self.__web
+
+    def setEstado(self, estado):
+        self.__estado = estado
+
+    def getEstado(self):
+        return self.__estado

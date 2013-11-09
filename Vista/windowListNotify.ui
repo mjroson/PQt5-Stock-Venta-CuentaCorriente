@@ -11,10 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Notificaciones de productos sin stock</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Img/Alert48.png</normaloff>../Img/Alert48.png</iconset>
   </property>
   <widget class="QTableView" name="tvDetalle">
    <property name="geometry">
@@ -22,8 +23,14 @@
      <x>20</x>
      <y>60</y>
      <width>291</width>
-     <height>311</height>
+     <height>291</height>
     </rect>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -31,7 +38,7 @@
     <rect>
      <x>20</x>
      <y>30</y>
-     <width>181</width>
+     <width>201</width>
      <height>16</height>
     </rect>
    </property>
@@ -39,14 +46,14 @@
     <string notr="true">font: 75 11pt &quot;MS Shell Dlg 2&quot;;</string>
    </property>
    <property name="text">
-    <string>Lista de archivos sin stock</string>
+    <string>Lista de productos sin stock :</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnSalir">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>350</y>
+     <x>340</x>
+     <y>360</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -82,7 +89,7 @@
     <rect>
      <x>320</x>
      <y>70</y>
-     <width>111</width>
+     <width>121</width>
      <height>41</height>
     </rect>
    </property>
@@ -101,10 +108,49 @@
    <property name="text">
     <string>DESACTIVAR</string>
    </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/Cancel24.png</normaloff>../Img/Cancel24.png</iconset>
+   </property>
    <property name="iconSize">
     <size>
      <width>20</width>
      <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnGenerarPdf">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>360</y>
+     <width>31</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../Img/FilePDF48.png</normaloff>../Img/FilePDF48.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>29</width>
+     <height>29</height>
     </size>
    </property>
   </widget>

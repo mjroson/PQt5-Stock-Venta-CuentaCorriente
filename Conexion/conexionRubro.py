@@ -10,10 +10,12 @@ class conexionRubro(object):
         self.conexion = Conexion()
         self.__rubro = Rubro()
 
-    def selectRubro(self):
-        query = "SELECT idrubros, descripcion FROM rubros"
+    def selectRubro(self, filterText):
+        query = "SELECT idrubros, descripcion FROM rubros WHERE descripcion LIKE %s"
+        parametro = filterText + '%'
+        value = parametro
         self.conexion.abrirConexion()
-        self.conexion.cursor.execute(query)
+        self.conexion.cursor.execute(query, value)
         listRubro = self.conexion.cursor.fetchall()
 
         return listRubro
