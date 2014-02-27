@@ -1,0 +1,18 @@
+
+
+
+
+class ResultConnection():
+    """
+        Objeto de resultado de conexion tiene como atributos
+            - Cantidad de filas afectadas (entero)
+            - Resultado (booleano)
+            - Contenido del resultado (lista)
+            - Sentencia de consulta (cadena de caracter)
+    """
+
+    def __init__(self):
+        self.cantRowAffect = 0
+        self.result = False
+        self.contentResult = []
+

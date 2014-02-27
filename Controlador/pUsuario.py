@@ -284,6 +284,9 @@ class PestaniaUsuario():
         self.winPrincipal.txtDDpto_u.setText('')
         self.winPrincipal.tvTelefonos_u.setModel(None)
         self.winPrincipal.txtFilterUsuarios_u.setText('')
+        self.winPrincipal.tvUsuarios_u.setModel(None)
+
+        self.winPrincipal.txtFilterUsuarios_u.setFocus(True)
 
     def setCampos(self):
         self.winPrincipal.txtApellido_u.setText(str(self.usuario.getApellido()))

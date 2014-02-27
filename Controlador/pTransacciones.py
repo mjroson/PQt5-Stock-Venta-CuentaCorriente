@@ -4,13 +4,12 @@ from Modelo.proveedor import Proveedor
 from Modelo.producto import Producto
 from PyQt5.QtWidgets import QRadioButton
 from Componentes.tableModel import MyTableModel
-from PyQt5.QtWidgets import QAbstractItemView
+from PyQt5.QtWidgets import QAbstractItemView, QTableView
 import datetime
 from PyQt5.Qt import QTextDocument, QPrinter, QPrintDialog
 from PyQt5.QtWidgets import QMessageBox, QDialog
-from PyQt5.Qt import QDesktopServices, QUrl, QAbstractItemModel
-
-
+from PyQt5.Qt import QDesktopServices, QUrl, QAbstractItemModel, QModelIndex
+from PyQt5 import QtCore
 
 class PestaniaTransacciones():
 
@@ -23,6 +22,9 @@ class PestaniaTransacciones():
         self.producto = Producto()
         self.tipoTransaccion = "VENTA"
         self.configInit()
+
+
+
 
 
     def configInit(self):
@@ -309,9 +311,17 @@ class PestaniaTransacciones():
         self.winPrincipal.txtFilterCliente_t.setText('')
         self.winPrincipal.txtFilterProducto_t.setText('')
 
+        self.winPrincipal.btnAceptar_t.setEnabled(False)
+        self.winPrincipal.btnCancelar_t.setEnabled(False)
+
+        self.winPrincipal.txtFilterCliente_t.setFocus(True)
+
 
     def onClickCancelar(self):
-        self.limpiarCampos()
+        alert = QDialog()
+        confirm = QMessageBox.question(alert, "Mensaje", "¿ Desea cancelar la transaccion ?", QMessageBox.Yes, QMessageBox.No)
+        if confirm == QMessageBox.Yes:
+            self.limpiarCampos()
 
 
     def cargarTablaClientes(self):
@@ -328,14 +338,19 @@ class PestaniaTransacciones():
         if len(listaClientes) > 0:
             header = ['ID','Apellido','Nombre','Email']
             tablaModel = MyTableModel(self.winPrincipal.tvClientes_t, listaClientes, header)
+            #tablaModel.setHeaderData(3, QtCore.Qt.Horizontal , 'Email', QtCore.Qt.AlignRight)
+            #index = QModelIndex()
+            #index.data(2)
+            #index.column()
+            #tablaModel.setData(index, QtCore.QVariant(QtCore.Qt.AlignHCenter), QtCore.Qt.TextAlignmentRole)
             self.winPrincipal.tvClientes_t.setModel(tablaModel)
             self.winPrincipal.tvClientes_t.selectionModel().currentChanged.connect(self.changeSelectedTable)
-
-
+            #self.winPrincipal.tvClientes_t.model().headerData(2, QtCore.Qt.Horizontal, QtCore.Qt.AlignRight)
             self.winPrincipal.tvClientes_t.setColumnHidden(0, True)
             self.winPrincipal.tvClientes_t.setColumnWidth(1, 130)
             self.winPrincipal.tvClientes_t.setColumnWidth(2, 130)
             self.winPrincipal.tvClientes_t.setColumnWidth(3, 150)
+
         else:
             self.winPrincipal.tvClientes_t.setModel(None)
 
@@ -452,13 +467,13 @@ class PestaniaTransacciones():
 
         stateProduct = True
 
-        if self.tipoTransaccion == "VENTA" and cantProducto >= self.producto.getCantidad():
+        if self.tipoTransaccion == "VENTA" and cantProducto > self.producto.getCantidad():
             stateProduct = False
 
         if cantProducto == 0:
             stateProduct = False
 
-        if stateProduct is True and self.validateProduct() is True:
+        if stateProduct is True: #and self.validateProduct() is True:
             modelListTransaccion = self.winPrincipal.tvDetalleTransaccion_t.model()
             header = ['ID', 'Cantidad','idProducto' ,'Producto', 'Descripcion', 'Precio Unit', 'Precio Tot' ]
 
@@ -536,13 +551,22 @@ class PestaniaTransacciones():
 
 
         if self.winPrincipal.tvDetalleTransaccion_t.model() is not None:
-            listTransacciones = self.winPrincipal.tvDetalleTransaccion_t.model().mylist
-            cant = int(len(list(self.winPrincipal.tvDetalleTransaccion_t.model().mylist).copy()))
+            listTransacciones = list(self.winPrincipal.tvDetalleTransaccion_t.model().mylist).copy()
+            header = ('ID', 'Cantidad','idProducto' ,'Producto', 'Descripcion', 'Precio Unit', 'Precio Tot')
+            listTransacciones.append(header)
 
+            #cant = int(len(list(self.winPrincipal.tvDetalleTransaccion_t.model().mylist).copy()))
+            tuple = ("", listTransacciones[0][1], listTransacciones[0][2], listTransacciones[0][3], listTransacciones[0][4], listTransacciones[0][5], listTransacciones[0][6])
+            listTransacciones[0] = tuple
+            for transaccion in listTransacciones:
+                if str(transaccion[2]) == str(self.producto.getIdProducto()):
+                    validate = False
+            """
             for i in range(cant):
 
                 if listTransacciones[i][2] == str(self.producto.getIdProducto()):
                     validate = False
+"""
 
 
         return validate
@@ -587,13 +611,14 @@ class PestaniaTransacciones():
     def onClickVenta(self):
         self.winPrincipal.label2_t.setText('Cliente')
         self.tipoTransaccion = "VENTA"
+        self.limpiarCampos()
 
 
 
     def onClickCompra(self):
         self.winPrincipal.label2_t.setText('Proovedor')
         self.tipoTransaccion = "COMPRA"
-
+        self.limpiarCampos()
 
 
 

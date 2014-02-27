@@ -11,7 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Marcas</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Img/Wheels32.png</normaloff>../Img/Wheels32.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QPushButton" name="btnBorrar_m">
    <property name="enabled">
@@ -34,8 +41,14 @@
      <bold>false</bold>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+border-radius: 11px;</string>
    </property>
    <property name="text">
     <string>BORRAR</string>
@@ -69,8 +82,14 @@
      <bold>false</bold>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+border-radius: 11px;</string>
    </property>
    <property name="text">
     <string>AGREGAR</string>
@@ -107,8 +126,14 @@
      <bold>false</bold>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+border-radius: 11px;</string>
    </property>
    <property name="text">
     <string>GUARDAR</string>
@@ -145,8 +170,14 @@
      <bold>false</bold>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+border-radius: 11px;</string>
    </property>
    <property name="text">
     <string>MODIFICAR</string>
@@ -189,6 +220,9 @@
    </property>
    <property name="horizontalScrollBarPolicy">
     <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="showGrid">
+    <bool>true</bool>
    </property>
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>

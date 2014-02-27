@@ -36,7 +36,9 @@ class windowMain():
         confirm  = QMessageBox.question(alert, "Mensaje", "¿ Desea cerrar sesion ?", QMessageBox.Yes,
              QMessageBox.No)
         if confirm == QMessageBox.Yes:
-            self.iniciar.winIniciar.show()
+            #self.iniciar.winIniciar.show()
+            self.iniciar = WindowIniciar()
+            self.iniciar.winIniciar.btnIniciar.clicked.connect(self.comprobarUsuario)
             self.principal.winPrincipal.close()
 
 

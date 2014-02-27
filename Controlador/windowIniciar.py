@@ -18,7 +18,7 @@ class WindowIniciar():
         #self.winIniciar.btnIniciar.clicked.connect(self.onClickValidarUsuario)
         self.winIniciar.btnSalir.clicked.connect(self.onClickSalir)
         self.usuario = Usuario()
-
+        self.winIniciar.txtUsuario.setFocus(True)
         self.winIniciar.show()
 
 
@@ -49,6 +49,10 @@ class WindowIniciar():
 
 
     def onClickSalir(self):
-        self.winIniciar.close()
+        alert = QDialog()
+        confirm  = QMessageBox.question(alert, "Mensaje", "¿ Desea salir ?", QMessageBox.Yes,
+             QMessageBox.No)
+        if confirm == QMessageBox.Yes:
+            self.winIniciar.close()
 
 

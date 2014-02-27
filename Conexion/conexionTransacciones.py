@@ -46,7 +46,7 @@ class ConexionTransacciones(object):
 
     def selectProductos(self, typeParameter, parameter, parameterTransaccion):
         query = """
-                    SELECT p.idproductos, p.nombre, p.descripcion, p.cantidad, p.pCompra, p.pVenta, m.descripcion
+                    SELECT p.idproductos, p.nombre, p.descripcion, p.cantidad, CAST(TRUNCATE(p.pCompra, 2) AS CHAR), CAST(TRUNCATE(p.pVenta, 2) AS CHAR), m.descripcion
                     FROM productos p, marcas m
                     WHERE p.marcas_idmarcas = m.idmarcas and """ +typeParameter+ """ LIKE %s
                 """

@@ -41,7 +41,7 @@ class conexionUsuario(object):
     def modificarUsuario(self, usuario):
         query = """
                     UPDATE personas p, usuarios u, direcciones d
-                    SET p.nombre = % , p.email= %s, u.apellido = %s, u.usuario = %s,
+                    SET p.nombre = %s , p.email= %s, u.apellido = %s, u.usuario = %s,
                         u.tipo = %s, u.contraseña = %s, d.direccion = %s, d.numero = %s, d.piso = %s, d.dpto = %s
                     WHERE p.idpersonas = u.personas_idpersonas and p.direcciones_iddirecciones = d.iddirecciones
                         and u.idusuarios = %s

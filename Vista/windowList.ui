@@ -11,9 +11,16 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Lista</string>
   </property>
-  <widget class="QTableView" name="tableView">
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Img/list.png</normaloff>../Img/list.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <widget class="QTableView" name="tvList">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -34,7 +41,7 @@
     <rect>
      <x>20</x>
      <y>640</y>
-     <width>31</width>
+     <width>34</width>
      <height>41</height>
     </rect>
    </property>
@@ -47,8 +54,14 @@
      <bold>false</bold>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #ddd);
+border-radius: 11px;</string>
    </property>
    <property name="text">
     <string/>
@@ -59,8 +72,8 @@
    </property>
    <property name="iconSize">
     <size>
-     <width>29</width>
-     <height>29</height>
+     <width>40</width>
+     <height>40</height>
     </size>
    </property>
   </widget>
@@ -83,9 +96,9 @@
   <widget class="QPushButton" name="btnSalir">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>450</x>
      <y>640</y>
-     <width>111</width>
+     <width>81</width>
      <height>41</height>
     </rect>
    </property>
@@ -98,8 +111,14 @@
      <bold>false</bold>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #bbb);
+border-radius: 11px;</string>
    </property>
    <property name="text">
     <string>SALIR</string>

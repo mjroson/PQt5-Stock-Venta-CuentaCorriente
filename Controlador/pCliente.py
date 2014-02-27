@@ -283,6 +283,9 @@ class PestaniaCliente():
         self.winPrincipal.tvTelefonos_c.setModel(None)
         self.winPrincipal.cbEstado_c.setCurrentIndex(0)
         self.winPrincipal.txtFilterClientes_c.setText('')
+        self.winPrincipal.tvClientes_c.setModel(None)
+
+        self.winPrincipal.txtFilterClientes_c.setFocus(True)
 
 
     def setCampos(self):

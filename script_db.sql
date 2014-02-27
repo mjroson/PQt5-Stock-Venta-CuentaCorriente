@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`direcciones` (
   `dpto` VARCHAR(10) NULL DEFAULT NULL,
   PRIMARY KEY (`iddirecciones`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 52
+AUTO_INCREMENT = 58
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`personas` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 53
+AUTO_INCREMENT = 59
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`clientes` (
   `idClientes` INT(11) NOT NULL AUTO_INCREMENT,
   `personas_idpersonas` INT(11) NOT NULL,
   `apellido` VARCHAR(45) NOT NULL,
+  `estado` INT(11) NOT NULL,
   PRIMARY KEY (`idClientes`),
   INDEX `fk_clientes_personas1_idx` (`personas_idpersonas` ASC),
   CONSTRAINT `fk_clientes_personas1`
@@ -55,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`clientes` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 18
+AUTO_INCREMENT = 21
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -67,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`proveedores` (
   `descripcion` VARCHAR(255) NULL DEFAULT NULL,
   `personas_idpersonas` INT(11) NOT NULL,
   `web` VARCHAR(200) NULL DEFAULT NULL,
+  `estado` INT(11) NOT NULL,
   PRIMARY KEY (`idproveedores`),
   INDEX `fk_proveedores_personas1_idx` (`personas_idpersonas` ASC),
   CONSTRAINT `fk_proveedores_personas1`
@@ -101,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`tipo_movimiento` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 209
+AUTO_INCREMENT = 306
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -110,8 +112,9 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db_perfumeria`.`movimiento` (
   `idMovimiento` INT(11) NOT NULL AUTO_INCREMENT,
-  `fecha` DATE NULL DEFAULT NULL,
+  `fecha` DATE NOT NULL,
   `tipo_movimiento_idtipo_movimiento` INT(11) NOT NULL,
+  `estado` INT(11) NOT NULL,
   PRIMARY KEY (`idMovimiento`),
   INDEX `fk_movimiento_tipo_movimiento1_idx` (`tipo_movimiento_idtipo_movimiento` ASC),
   CONSTRAINT `fk_movimiento_tipo_movimiento1`
@@ -120,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`movimiento` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 209
+AUTO_INCREMENT = 261
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -132,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`marcas` (
   `descripcion` VARCHAR(60) NOT NULL,
   PRIMARY KEY (`idmarcas`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 49
+AUTO_INCREMENT = 50
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -184,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`productos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 14
+AUTO_INCREMENT = 28
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -211,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`detalle_movimiento` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 245
+AUTO_INCREMENT = 322
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -260,6 +263,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`pagos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 36
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -279,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`telefonos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 54
+AUTO_INCREMENT = 55
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -319,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `db_perfumeria`.`usuarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 13
 DEFAULT CHARACTER SET = utf8;
 
 

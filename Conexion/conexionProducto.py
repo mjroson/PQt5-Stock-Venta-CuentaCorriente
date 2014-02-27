@@ -16,7 +16,7 @@ class conexionProducto(object):
 
     def selectProducto(self, typeParameter, parameter, parameterState, parameterStock):
         query = """
-                    SELECT p.idproductos, p.nombre, p.descripcion, TRUNCATE(p.pCompra, 2), TRUNCATE(p.pVenta, 2),
+                    SELECT p.idproductos, p.nombre, p.descripcion, CAST(TRUNCATE(p.pCompra, 2) AS CHAR), CAST(TRUNCATE(p.pVenta, 2) AS CHAR),
                             p.genero, p.estado, p.cantidad, p.cant_minima, m.idmarcas, m.descripcion, r.idrubros,
                             r.descripcion, prov.idproveedores, prov.descripcion
                     FROM productos p, marcas m , rubros r, proveedores prov

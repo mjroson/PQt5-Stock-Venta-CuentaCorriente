@@ -417,7 +417,6 @@ class PestaniaPagos():
 
         doc = QTextDocument()
         doc.setHtml(html)
-
         printer = QPrinter()
         printer.setOutputFileName(nombrePdf)
 

@@ -11,6 +11,7 @@ from Modelo.rubro import Rubro
 from Modelo.marca import Marca
 from PyQt5 import QtCore
 from PyQt5.QtCore import QAbstractItemModel
+from PyQt5 import Qt
 from PyQt5.QtWidgets import QMessageBox, QDialog
 
 
@@ -42,6 +43,7 @@ class PestaniaProducto():
         self.winPrincipal.btnRubro_p.clicked.connect(windowRubro)
         self.winPrincipal.btnMarca_p.clicked.connect(windowMarca)
 
+        #windowMarca.connect(windowMarca, Qt.SIGNAL('destroyed()'), self.onQuitMarca)
         self.winPrincipal.txtFilterProductos_p.returnPressed.connect(self.search)
 
         #self.cargarTabla()
@@ -53,6 +55,8 @@ class PestaniaProducto():
         self.setCompleterProveedor()
 
         self.winPrincipal.txtFilterProductos_p.setFocus(True)
+
+
 
     def finish(self):
         self.winPrincipal.btnAgregar_p.disconnect()
@@ -89,8 +93,10 @@ class PestaniaProducto():
 
             if self.winPrincipal.rbFemenino_p.isChecked() is True:
                 self.producto.setGenero("F")
-            else:
+            elif self.winPrincipal.rbMasculino_p.isChecked() is True:
                 self.producto.setGenero("M")
+            else:
+                self.producto.setGenero("I")
 
             self.producto.setNombre(str(self.winPrincipal.txtNombre_p.text()))
             self.producto.setPrecioCompra(float(self.winPrincipal.txtPrecioCompra_p.text()))
@@ -275,6 +281,9 @@ class PestaniaProducto():
         self.completerRubro.setCurrentRow(0)
         self.completerMarca.setCurrentRow(0)
         self.winPrincipal.txtFilterProductos_p.setText('')
+        self.winPrincipal.tvProductos_p.setModel(None)
+
+        self.winPrincipal.txtFilterProductos_p.setFocus(True)
 
     def setCampos(self):
         self.winPrincipal.txtNombre_p.setText(self.producto.getNombre())
@@ -296,8 +305,10 @@ class PestaniaProducto():
 
         if self.producto.getGenero() == 'F':
             self.winPrincipal.rbFemenino_p.setChecked(True)
-        else:
+        elif self.producto.getGenero() == 'M':
             self.winPrincipal.rbMasculino_p.setChecked(True)
+        else:
+            self.winPrincipal.rbIndiferente_p.setChecked(True)
 
 
 
@@ -316,10 +327,10 @@ class PestaniaProducto():
             mensaje = "Falta seleccionar la marca"
         elif self.completerRubro.currentCompletion() == '':
             mensaje = 'Falta seleccionar el rubro'
-        """
-        elif self.completerProveedor.currentCompletion() =='' or self.completerProveedor.currentRow() == 0:
-            mensaje= "Falta ingresar un Proveedor"
 
+
+        """elif self.completerProveedor.currentCompletion() =='' or self.completerProveedor.currentRow() == 0:
+            mensaje= "Falta ingresar un Proveedor"
         elif self.completerMarca.currentCompletion() == '' or self.completerMarca.currentRow() == 0:
             mensaje = "Falta seleccionar la marca"
         elif self.completerRubro.currentCompletion() == '' or self.completerRubro.currentRow() == 0:
@@ -338,9 +349,10 @@ class PestaniaProducto():
     def setCompleterRubro(self):
         listRubros = self.conexionProducto.listRubro()
         self.completerRubro = QCompleter(listRubros)
-
+        #self.completerRubro.dynamicPropertyNames()
         self.completerRubro.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.winPrincipal.txtRubro_p.setCompleter(self.completerRubro)
+
 
 
     def setCompleterProveedor(self):
